@@ -1,0 +1,56 @@
+.error-msgFullname p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  
+  .error-msgEmail p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  
+  .error-msgPassword p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  
+  .error-msgPhone p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  
+  .error-msgConfirmPass p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  
+  input:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  input:invalid::placeholder {
+    color: transparent;
+  }
+  
+  .error-loginError p {
+    margin-bottom: -2.5rem;
+    color: #8b0300 !important;
+    float: right;
+    font-size: .8em !important;
+    margin-right: 5px;
+  }
+  

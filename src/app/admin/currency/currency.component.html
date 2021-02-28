@@ -1,0 +1,97 @@
+<!--<ng-container *access="{condition:['admin_dashboard'],requiredAll:true,redirect:true}">-->
+<div class="theme-layout" id="scrollup">
+  <div *ngIf="this.showLoader == true" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif"/>
+  </div>
+  <section>
+    <div class="block no-padding" style="margin-top: 50px">
+      <div class="container">
+        <div class="row no-gape">
+          <div class="col-lg-6 column">
+            <div class="padding-left">
+              <div class="manage-jobs-sec">
+                <h3>Manage Currency</h3>
+                <table>
+                  <thead>
+                  <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td class="pull-right">Action</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let currency  of this.currencyList;">
+                    <td *ngIf="!currency.deleted">
+                      <div class="table-list-title">
+                        <h3><a title="">{{currency.id}}</a></h3>
+
+                      </div>
+                    </td>
+                    <td *ngIf="!currency.deleted">
+                      <div class="table-list-title">
+                        <h3><a title="">{{currency.nameEnglish}}</a></h3>
+
+                      </div>
+                    </td>
+
+                    <td *ngIf="!currency.deleted">
+                      <ul class="action_job pull-right">
+                        <li><span>Edit</span><a (click)="openPopup(currency,currencyModal,'currency','edit')"
+                                                title=""><i
+                          class="la la-pencil"></i></a></li>
+
+                      </ul>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <a (click)="addCurrency(currencyModal)" class="add" setposition="right"
+                   title=""><i
+                  class="la la-plus-circle"></i> Add new</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <modal #currencyModal>
+    <modal-header>
+      <h3>{{this.action | titlecase}} currency</h3></modal-header>
+
+    <modal-content>
+      <div *ngIf="currency">
+        <form (submit)="saveCurrency('save')"
+              [formGroup]="currencyForm">
+          <div *ngIf="!currency.deleted">
+            <div class="row">
+              <div class="col-lg-10">
+                <span class="pf-title">Name</span>
+                <div class="pf-field">
+                  <input [(ngModel)]="currency.nameEnglish"
+                         class="form-control"
+                         formControlName="nameEnglish" required
+                         type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 division17button" style="float: right !important;">
+            <button>
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </modal-content>
+
+    <modal-footer>
+      <button (click)="closeModal()" class="btn btn-primary">close</button>
+    </modal-footer>
+  </modal>
+</div>
+<!--</ng-container>-->
+
+

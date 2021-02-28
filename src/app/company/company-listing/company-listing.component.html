@@ -1,0 +1,98 @@
+<div class="theme-layout webView" id="scrollup">
+  <div *ngIf="this.showLoader == true" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif"/>
+  </div>
+  <!-- <section class="overlape">
+    <div class="block no-padding">
+      <div class="parallax layer color black2" data-velocity="-.1"
+           style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 570.28px transparent;"></div>
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <h3>Company Listing</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="block no-padding">
+      <div class="container">
+        <div class="row no-gape">
+          <aside class="col-lg-4 column border-right">
+            <!--<div class="widget">
+              <div class="search_widget_job">
+                <div class="field_w_search">
+                  <input type="text" placeholder="Search Keywords" />
+                  <i class="la la-search"></i>
+                </div>&lt;!&ndash; Search Widget &ndash;&gt;
+                <div class="field_w_search">
+                  <input type="text" placeholder="All Locations" />
+                  <i class="la la-map-marker"></i>
+                </div>&lt;!&ndash; Search Widget &ndash;&gt;
+              </div>
+            </div>-->
+            <div class="widget" style="cursor: pointer;">
+              <h3 (click)="allData()">All</h3>
+            </div>
+            <div class="widget">
+              <h3 class="sb-title closed">Specialism</h3>
+              <div class="type_widget">
+                <p *ngFor="let cate of category"><input type="checkbox" id="{{cate.nameEnglish}}"
+                    name="{{cate.nameEnglish}}" (change)="selectSpecialism($event,cate)">
+                  <label for="{{cate.nameEnglish}}">{{cate.nameEnglish}}</label></p>
+              </div>
+            </div>
+            <div class="widget">
+              <h3 class="sb-title open">Experience</h3>
+              <div class="type_widget">
+                <p *ngFor="let team of teamSize"><input type="checkbox" id="{{team.nameEnglish}}"
+                    name="{{team.nameEnglish}}" (change)="selectTeamSize($event,team)">
+                  <label for="{{team.nameEnglish}}">{{team.nameEnglish}}</label>
+                </p>
+              </div>
+            </div>
+          </aside>
+          <div class="col-lg-8 ">
+            <div class="emply-list-sec" *ngFor="let company of filteredCompanies">
+              <div [routerLink]="['/company/profile/'+company.id]" class="emply-list">
+                <div class="job-thumb">
+                  <span><img [src]="company.companyProfilePic" alt="Place image title"
+                      *ngIf="!company.isImageLoading; else noImageFound">
+                    <ng-template #noImageFound>
+                      <img src="../../../assets/images/avatar-company.png">
+                    </ng-template>
+                  </span>
+                </div>
+                <div class="emply-list-info">
+                  <!--<div class="emply-pstn">{{company.jobCount}} Jobs Posted</div>-->
+                  <h3><a title="">{{company.name}}</a></h3>
+                  <h5>{{company.jobCount}} Jobs Posted</h5>
+                  <span
+                    *ngFor="let category  of company.categorySet; let isLast=last">{{category.nameEnglish}}{{isLast ? '' : ', '}}</span>
+
+
+                  <h6><i class="la la-map-marker"></i> {{company.companyContactInfo.mapDetail}}</h6>
+                  <p>{{company.description}}</p>
+                </div>
+                <div>
+                  <span *ngIf="company.following" class="job-applied">Following</span>
+                </div>
+                <!--<div class="shortlisted pull-right" *ngIf="company.following">
+                  <a>Following</a>
+                </div>-->
+              </div>
+            </div>
+            <div class="pagination">
+              <div (click)="populateCompanyList()" class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
+            </div><!-- Pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

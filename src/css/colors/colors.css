@@ -1,0 +1,76 @@
+/*------------------------------------------------------------------
+Background Color
+-------------------------------------------------------------------*/
+.bg-color,
+.account-popup > form button,
+.layer.color::before,
+.pricetable > a,
+.pricetable.active,
+.bottom-line.style2{
+  background-color: #33495f;
+}
+
+/*------------------------------------------------------------------
+Text Color
+-------------------------------------------------------------------*/
+.text-color,
+.pricetable-head h2,
+.pricetable.active > a{
+    color: #dd1503;
+}
+
+/*------------------------------------------------------------------
+Border Color
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+COLOR SCHEME 2
+-------------------------------------------------------------------*/
+
+.forsticky.sticky .post-job-btn{
+	border: 2px solid #f44a08;
+	background: transparent; color: #f44a08;
+}
+.post-job-btn{
+    background-color: #f44a08 ; border: 2px solid #f44a08;
+}
+
+
+.bg-color,
+.post-job-btn,
+.account-popup .close-popup,
+.blog-metas a::before{
+    background-color: #f44a08 ;
+}
+
+/*------------------------------------------------------------------
+Text Color
+-------------------------------------------------------------------*/
+.text-color,
+.menu-sec nav > ul > li > ul li:hover > a,
+.account-popup > form .cfield i,
+.account-popup > form > a,
+.chosen-container-single .chosen-single div::before,
+.job-field i,
+.chosen-container .chosen-results li.highlighted,
+.active-result.result-selected,
+.scroll-to a,
+.p-category > a p,
+.p-category:hover i,
+.job-title-sec span,
+.blog-metas a,
+.blog-details > a{
+    color: #f44a08 ;
+}
+
+/*------------------------------------------------------------------
+Border Color
+-------------------------------------------------------------------*/
+.border-color,
+.select-user > span.active,
+.browse-all-cat a{
+  background: #de3a3a !important;
+  color: #fff !important;
+}
+

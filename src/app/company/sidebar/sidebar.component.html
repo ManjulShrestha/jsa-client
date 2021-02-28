@@ -1,0 +1,38 @@
+<aside >
+  <div class="widget">
+    <div class="tree_widget-sec">
+      <ul>
+        <li class="inner-child">
+          <a title=""><i class="la la-file-text"></i>Company Profile</a>
+          <ul>
+            <ol><a [routerLink]="['/company/profile/0']" title="">My Profile</a></ol>
+            <ol><a [routerLink]="['/company/edit-profile']" title="">Edit Profile</a></ol>
+          </ul>
+
+        </li>
+        <li class="inner-child">
+          <a title=""><i class="la la-briefcase"></i>Manage Jobs</a>
+          <ul>
+            <li><a  [routerLink]="['/company/post-job/0']" title="">Post Jobs</a></li>
+            <li><a  [routerLink]="['/company/list-job']" title="">View Jobs</a></li>
+
+          </ul>
+        </li>
+        <li class="inner-child">
+          <a title=""><i class="la la-file"></i>Candidates</a>
+          <ul>
+            <li><a  [routerLink]="['/company/candidate-list']" title="">Candidate List</a></li>
+            <li><a  [routerLink]="['/company/applied']" title="">Applied Candidates</a></li>
+
+          </ul>
+        </li>
+        <li class="inner-child">
+          <a   title=""><i class="la la-money"></i>Transactions</a>
+          <ul>
+            <li><a [routerLink]="['/company/transaction-detail']" title="">View Transcations</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,50 @@
+<section>
+  <div *ngIf="this.showLoader" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif"/>
+  </div>
+  <div class="block remove-bottom" style="margin-top:50px !important; ">
+    <div class="container">
+      <div class="row no-gape">
+        <div class="col-lg-3 column border-right">
+          <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-lg-9 column">
+          <div class="padding-left">
+            <div class="emply-resume-sec">
+              <div *ngFor="let candidate  of this.candidateList;">
+                <div class="emply-resume-list">
+                  <div class="emply-resume-thumb">
+                      <span><img *ngIf="!candidate.isImageLoading; else noImageFound" [src]="candidate.companyProfilePic"
+                                 alt="Place image title">
+                    <ng-template #noImageFound>
+                      <img src="../../../assets/images/avatar-black.png">
+                    </ng-template>
+                  </span>
+                  </div>
+                  <div class="emply-resume-info">
+                    <h3><a title="">{{candidate.name | titlecase}}</a></h3>
+                    <span><i>{{candidate.jobTitle.nameEnglish}}</i></span>
+                    <p><i class="la la-map-marker"></i>Istanbul
+                      / {{candidate.candidateContactInfo.country ? candidate.candidateContactInfo.country.nameEnglish : ''}}
+                  </div>
+                  <div class="shortlisted pull-right" *ngIf="candidate.following">
+                    <a >Following
+                    </a>
+                  </div>
+                  <div class="shortlists pull-right">
+                    <a [routerLink]="['/company/candidate-profile/'+candidate.id]">View Profile
+                    </a>
+                  </div>
+                </div><!-- Emply List -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <div (click)="populateCandidateList()" class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
+  </div>
+</section>>
+

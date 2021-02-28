@@ -1,0 +1,83 @@
+<div class="theme-layout webView" id="scrollup">
+
+  <!-- <section class="overlape">
+    <div class="block no-padding">
+      <div class="parallax scrolly-invisible no-parallax"
+           data-velocity="-.1"
+           style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;"></div>
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <h3>Welcome {{this.company.name}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="block no-padding">
+      <div class="container">
+        <div class="row no-gape">
+          <div class="col-lg-3 column border-right">
+            <app-sidebar></app-sidebar>
+          </div>
+          <div class="col-lg-9 column">
+            <div class="padding-left">
+              <div class="manage-jobs-sec">
+                <h3>Packages</h3>
+                <table class="pkges-table">
+                  <thead>
+                    <tr>
+                      <td>Transaction ID</td>
+                      <td>Package</td>
+                      <td>Expiry</td>
+                      <td>Amount</td>
+                      <td>Total Jobs/CVs</td>
+                      <td>Used</td>
+                      <td>Remaining</td>
+                      <td>Status</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let payment of this.company.companyPayments">
+                      <td>
+                        <span>{{payment.id}}</span>
+                      </td>
+                      <td>
+                        <div class="table-list-title">
+                          <h3><a href="#" title="">Supper Jobs</a></h3>
+                        </div>
+                      </td>
+                      <td>
+                        <span>{{payment.paymentDetail.paymentReceivedDate |  date:'MMM dd, yyyy'}}</span>
+                      </td>
+                      <td>
+                        <span>{{payment.paymentDetail.amount}}</span>
+                      <td>
+                        <span>{{payment.noOfJobSlots}}</span>
+                      </td>
+                      <td>
+                        <span>{{payment.noOfJobPosted}}</span>
+                      </td>
+                      <td>
+                        <span>{{payment.noOfJobSlots - payment.noOfJobPosted}}</span>
+                      </td>
+                      <td>
+                        <span>{{payment.paymentDetail.status}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>

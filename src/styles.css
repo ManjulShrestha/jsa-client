@@ -1,0 +1,427 @@
+/* You can add global styles to this file, and also import other style files */
+@import "css/style.css";
+@import "css/animate.min.css";
+@import "css/bootstrap-datepicker.css";
+@import "css/bootstrap-grid.css";
+@import "css/bootstrap.css";
+@import "css/chosen.css";
+@import "css/icons.css";
+@import "css/responsive.css";
+@import "css/colors/colors.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.c-btn {
+  border: 2px solid #e8ecec !important;
+  -webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;
+  -ms-border-radius: 8px !important;
+  -o-border-radius: 8px !important;
+  border-radius: 8px !important;
+  padding: 14px 45px 14px 15px !important;
+  background: #ffffff !important;
+  font-family: Open Sans !important;
+  font-size: 13px !important;
+  color: #101010 !important;
+  line-height: 24px !important;
+}
+
+.btn-iceblue {
+  float: none !important;
+  background: #0079FE !important;
+  border: 1px solid #ccc !important;
+  color: #fff !important;
+  /*display: inline-block !important;*/
+  line-height: 1.25 !important;
+  border-radius: 3px !important;
+  font-size: 14px !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+}
+
+.btn-container {
+  text-align: center !important;
+}
+
+input.ng-invalid.ng-touched {
+  border: #8b0300 2px solid;
+}
+
+textarea.ng-invalid.ng-touched {
+  border: #8b0300 2px solid;
+}
+
+.progress-inner {
+
+  height: 14px !important;
+  background: #f64a84 !important;
+  /*-webkit-border-radius: 8px !important;*/
+  /*-moz-border-radius: 8px !important;*/
+  /*-ms-border-radius: 8px !important;*/
+  /*-o-border-radius: 8px !important;*/
+  /*border-radius: 8px !important;*/
+  font-size: 13px !important;
+  text-align: center !important;
+}
+
+.progress-outer {
+  height: 22px !important;
+  /*-webkit-border-radius: 8px !important;*/
+  /*-moz-border-radius: 8px !important;*/
+  /*-ms-border-radius: 8px !important;*/
+  /*-o-border-radius: 8px !important;*/
+  /*border-radius: 8px !important;*/
+}
+
+.editPosition {
+  float: right;
+}
+
+.editPosition ul li a:hover {
+  color: #fb236a;
+}
+
+.edu-history-sec > a:hover {
+  color: #fb236a !important;
+}
+
+.row custom i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #8b91dd;
+  content: "";
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+
+}
+
+.account-popup .custom-close-for-popup {
+  position: absolute;
+  top: 56px;
+  width: 50px;
+  height: 50px;
+  float: none;
+  margin: 0;
+  right: 15px;
+  text-align: center;
+  line-height: 50px;
+  color: #de3a3a;
+  font-size: 20px;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.division17link > a {
+  color: #ffffff !important;
+}
+
+.division17link > a:hover, focus {
+  color: #fb236a !important;
+}
+
+.division17link > a input :hover, focus {
+  color: #fb236a !important;
+}
+
+.division17button button {
+  float: right !important;
+  color: #ffffff !important;
+  font-family: Open Sans !important;
+  font-size: 15px !important;
+  padding: 11px 40px !important;
+  border-radius: 8px;
+  background: #33495f !important;
+
+  -webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;
+  -ms-border-radius: 8px !important;
+  -o-border-radius: 8px !important;
+  border-radius: 8px !important;
+
+  margin-top: 10px !important;
+}
+
+.division17button > button:hover {
+  background: #de3a3a !important;
+}
+
+.division17button button[disabled] {
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  opacity: .65;
+  box-shadow: none;
+}
+
+.customCancelAdd > a {
+  float: right;
+  line-height: 27px;
+  font-family: Open Sans;
+  font-size: 13px;
+  color: #8b91dd;
+}
+
+.customCancelAdd > a i {
+  float: left;
+  width: 27px;
+  height: 27px;
+  background: #8b91dd;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+
+  color: #ffffff;
+  text-align: center;
+  line-height: 27px;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.pf-field > owl-date-time {
+  z-index: 1010 !important;
+}
+
+.cand-single-user > div {
+  position: center !important;
+}
+.webView{
+  margin-top:6%;
+}
+@media only screen and (max-device-width: 1200px) {
+  .webView{
+    margin-top:0px;
+  }
+}
+
+/*.modal-dialog,*/
+/*.modal-content {*/
+/*overflow-y: auto !important;*/
+/*max-height: 100% !important;*/
+/*}*/
+
+
+.modal-content {
+  overflow-y: auto !important;
+  max-height: 100% !important;
+}
+
+.modal {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  display: none !important;
+  outline: 0 !important;
+}
+
+
+label::before{
+  content: none !important;
+}
+
+.form-control{
+  height: auto !important;
+}
+
+.action-inner-div17 {
+  float: right;
+  width: 100%;
+}
+
+.action-inner-div17 a {
+  float: right;
+  font-family: Open Sans;
+  font-size: 13px;
+  color: #ffffff;
+  margin-left: 30px;
+}
+
+.action-inner-div17 a i {
+  float: left;
+  font-size: 25px;
+  line-height: 17px;
+  margin-right: 10px;
+}
+
+.action-inner-div17 i {
+  float: left;
+  font-size: 25px;
+  line-height: 17px;
+  margin-right: 156px;
+  color: #ffffff;
+}
+
+.action-inner-div17 label {
+  float: right;
+  /*font-size: 25px;*/
+  /*line-height: 17px;*/
+  margin-left: -25px;
+  font-weight: 200 !important;
+  color: #ffffff;
+}
+
+.action-inner-div17 label:hover {
+  color: #fb236a;
+}
+
+.skills-btn a:hover {
+  color: #fb236a !important;
+}
+
+.inputfile1 {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile1 + label {
+  color: white;
+  display: inline-block;
+  /*padding: -1px 12px;*/
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  /*vertical-align: middle;*/
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  /*background-color: $success-color;*/
+}
+
+.inputfile1:focus + label,
+.inputfile1 + label:hover {
+  background: #fb236a;
+
+  /*background-color: $success-color-dark;*/
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+label::before {
+  content: none !important;
+}
+
+.modal-dialog{
+  margin: 22em auto !important;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 9999999 !important;
+}
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 9999999 !important;
+}
+
+.pricetable:hover {
+  border-left-color: #8b91dd;
+
+  -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+  z-index: 2;
+  position: relative;
+}
+
+.modal-header{
+  display: inline-block !important;
+}
+
+.change-password-form {
+  margin-top: -13px;
+  margin-bottom: -13px;
+}
+
+.job-applied{
+  color: #26AE61;
+  display: table-cell;
+  vertical-align: middle;
+  font-family: Open Sans;
+  font-size: 12px;
+  border: 2px solid;
+  float: right;
+  padding: 7px 0;
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+
+  width: 108px;
+  margin: 9px 0;
+  text-align: center;
+}
+
+.cand-single-user > div {
+  display: table-cell;
+  width: 33.334%;
+  float: left !important;
+}
+
+.c-logo-division17 img {
+  float: none;
+  display: inline-block;
+  max-width: 100%;
+  height: 51px;
+  width: 98px;
+}
+
+.form-location-sec form button:hover {
+  background: #de3a3a !important;
+  color: #fff !important;
+}
+
+.select-user > span:hover {
+  border-color: #f44a08 !important;
+}
+
+.modal-header .close {
+  margin-top: -36px !important;
+}

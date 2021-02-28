@@ -1,0 +1,53 @@
+<aside>
+  <div class="widget">
+    <div class="tree_widget-sec">
+      <ul>
+        <li class="inner-child">
+          <a title=""><i class="la la-file-text"></i>Candidate Profile</a>
+          <ul>
+            <ol><a (click)="checkRedirect()" title="">My Profile</a></ol>
+            <ol><a [routerLink]="['/candidate/edit-profile']" title="">Edit Profile</a></ol>
+          </ul>
+
+        </li>
+        <!--<li class="inner-child">-->
+        <!--<a title=""><i class="la la-briefcase"></i>Resume</a>-->
+        <!--<ul>-->
+        <!--<li><a [routerLink]="['/candidate/add-resume']"  title="">Edit resume</a></li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <li class="inner-child">
+          <a title=""><i class="la la-money"></i>Jobs</a>
+          <ul>
+            <li><a [routerLink]="['/job/list/0']" title="">View Jobs</a></li>
+            <!--<li><a [routerLink]="['/job/list/']"  title="">Applied Jobs</a></li>-->
+          </ul>
+        </li>
+        <li class="inner-child">
+          <a title=""><i class="la la-money"></i>Company</a>
+          <ul>
+            <li><a [routerLink]="['/company/list/']" title="">View Companies</a></li>
+            <!-- <li><a [routerLink]="['/company/list/']"  title="">Followed Companies</a></li>-->
+          </ul>
+        </li>
+        <!-- <li class="inner-child">
+          <a   title=""><i class="la la-lock"></i>Change Password</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+  <!--<div class="widget">
+    <div class="skill-perc">
+      <h3>Skills Percentage </h3>
+      <p>Put value for "Cover Image" field to increase your skill up to "15%"</p>
+      <div class="skills-bar">
+        <span>85%</span>
+        <div
+          class="second circle"
+          data-size="155"
+          data-thickness="60">
+        </div>
+      </div>
+    </div>
+  </div>-->
+</aside>

@@ -1,0 +1,15 @@
+.no-padding{
+    padding-top:87px!important;
+}
+.inner-headerModified{
+    float: left;
+    width: 100%;
+    position: relative;
+    padding-top: 160px;
+    padding-bottom: 15px;
+    z-index: 0;
+}
+
+.job-overview ul li div span {
+  float: none !important;
+}

@@ -1,0 +1,299 @@
+<div *ngIf="showLoader" class="page-loading">
+  <img alt="" src="../assets/images/loader.gif" />
+</div>
+<ng-container *access="{condition:['company_dashboard'],requiredAll:true,redirect:true}">
+
+  <div class="theme-layout webView" id="scrollup">
+
+    <section>
+      <div class="block no-padding">
+        <div class="container">
+          <div class="row no-gape">
+            <div class="col-lg-3 column border-right">
+              <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-lg-9 column">
+              <div class="padding-left">
+                <div class="profile-title" id="mp">
+                  <h3>My Profile</h3>
+                  <div class="upload-img-bar">
+                    <span><img [src]="companyProfilePic" alt="Place image title"
+                        *ngIf="!isImageLoading; else noImageFound">
+                      <ng-template #noImageFound>
+                        <img src="../../../assets/images/avatar-company.png">
+                      </ng-template>
+                    </span>
+                    <div class="upload-info">
+
+                      <input [disabled]="uploadingFile" type="file" id="file" (change)="photoUpload($event)"
+                        class="inputfile">
+                      <span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="profile-form-edit">
+                  <form [formGroup]="companyForm">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <br/><br/><br/>
+                        <h5><b>Choose pictures for carousel</b></h5><br/>
+                        <span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
+                        <br/><br/>
+                        <form [formGroup]="uploadForm" (ngSubmit)="submit()">
+                          <br>
+                          <input formControlName="document" type="file" ng2FileSelect [uploader]="uploader" multiple
+                                 (change)="uploadSubmit()"/>
+                          <table>
+                            <thead>
+                            <tr>
+                              <th width="50%">
+                                <span *ngIf="uploader.queue.length > 0 || imageUrls.length > 0">File Name</span>
+                              </th>
+                              <th width="50%">
+                                <span *ngIf="uploader.queue.length > 0 || imageUrls.length > 0">Remove</span>
+                              </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                              <div *ngFor="let item of imageUrls">
+                                <th width="70%">
+                                  <span><img [src]="item.picture" alt="Place image title"></span></th>
+                                <th class="text-center" width="30%">
+                                  <a (click)="deletePhotos(item.companyPicture)">X</a>
+
+                                </th>
+                              </div>
+                            </tr>
+                            <tr *ngFor="let item of uploader.queue">
+                              <th width="70%">
+                                {{ item.file.name}}({{item.file.size / 1000000}} MB)
+                              </th>
+                              <th class="text-center" width="30%">
+                                <mat-icon (click)="item.remove()">X</mat-icon>
+                              </th>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <br>
+                          <div class="division17button">
+                            <button type="submit">Upload Pictures</button>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('companyName',companyForm)}">Company Name</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.name" type="text" class="form-control"
+                            formControlName="companyName" placeholder="Company Name">
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('companyName',companyForm)"
+                          class="invalid-block">Company Name Error</span>
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title">Industry</span>
+                        <div class="pf-field">
+                          <angular2-multiselect [data]="industry" [(ngModel)]="selectedIndustry"
+                            [settings]="dropdownSettings" formControlName="industry">
+                          </angular2-multiselect>
+                          <span [@validanimation] *ngIf="isFieldValid('companyName',companyForm)"
+                            class="invalid-block">Industry Name Error</span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('since',companyForm)}">Since</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.startDate" class="form-control" [owlDateTime]="dt1"
+                            [owlDateTimeTrigger]="dt1" formControlName="since" placeholder="since">
+                          <owl-date-time pickerType="calendar" #dt1></owl-date-time>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('since',companyForm)" class="invalid-block">Year
+                          error</span>
+                      </div>
+                      <div class="col-lg-3">
+                        <span class="pf-title">Team Size</span>
+                        <div class="pf-field">
+                          <angular2-multiselect [data]="teamSize" [(ngModel)]="selectedTeamSize"
+                            [settings]="dropdownSettings" formControlName="teamSize">
+                          </angular2-multiselect>
+                          <span [@validanimation] *ngIf="isFieldValid('companyName',companyForm)"
+                            class="invalid-block">Company Name Error</span>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <span class="pf-title">Categories</span>
+                        <div class="pf-field no-margin">
+                          <angular2-multiselect [data]="category" [(ngModel)]="selectedCategory"
+                            [settings]="dropDownSettingsCategory" (onAddFilterNewItem)="onAddItem($event)"
+                            formControlName="category">
+                          </angular2-multiselect>
+                          <span [@validanimation] *ngIf="isFieldValid('companyName',companyForm)"
+                            class="invalid-block">Company Name Error</span>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('description',companyForm)}">Description</span>
+                        <div class="pf-field">
+                          <textarea [(ngModel)]="company.description" type="text" class="form-control"
+                            formControlName="description" placeholder="since"></textarea>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('description',companyForm)"
+                          class="invalid-block">Descritpion error</span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="social-edit" id="sn">
+                  <h3>Social Edit</h3>
+                  <form [formGroup]="companySocialForm">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('facebook',companySocialForm)}">Facebook</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companySocialInfo.facebook" type="text" class="form-control"
+                            formControlName="facebook" placeholder="www.facebook.com/....." />
+                          <i class="la la-facebook"></i>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('facebook',companySocialForm)"
+                          class="invalid-block">Company Name Error</span>
+
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('twitter',companySocialForm)}">Twitter</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companySocialInfo.twitter" type="text" class="form-control"
+                            formControlName="twitter" placeholder="www.twitter.com/....." />
+                          <i class="la la-twitter"></i>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('twitter',companySocialForm)"
+                          class="invalid-block">Twitter Error</span>
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('google',companySocialForm)}">Google</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companySocialInfo.google" type="text" class="form-control"
+                            formControlName="google" placeholder="www.google.com/....." />
+                          <i class="la la-google"></i>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('google',companySocialForm)"
+                          class="invalid-block">Google Error</span>
+
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('linkedIn',companySocialForm)}">Linkedin</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companySocialInfo.linkedIn" type="text" class="form-control"
+                            formControlName="linkedIn" placeholder="www.linkedin.com/....." />
+                          <i class="la la-linkedin"></i>
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('linkedIn',companySocialForm)"
+                          class="invalid-block">Linkedin Error</span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="contact-edit" id="ci">
+                  <h3>Contact</h3>
+                  <form [formGroup]="companyContactForm">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('phoneNumber',companyContactForm)}">Phone
+                          Number</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.phoneNumber" type="text" class="form-control"
+                            formControlName="phoneNumber" placeholder="+90 538 963 58 96" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('phoneNumber',companyContactForm)"
+                          class="invalid-block">Phone Number Error</span>
+                      </div>
+                      <div class="col-lg-4">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('email',companyContactForm)}">Email</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.email" type="text" class="form-control"
+                            formControlName="email" placeholder="info@division.com" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('email',companyContactForm)"
+                          class="invalid-block">Email Error</span>
+                      </div>
+                      <div class="col-lg-4">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('website',companyContactForm)}">Web Site</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.website" type="text" class="form-control"
+                            formControlName="website" placeholder="www.demo.com" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('website',companyContactForm)"
+                          class="invalid-block">Web Site Error</span>
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title">Country</span>
+                        <div class="pf-field">
+                          <angular2-multiselect [data]="country" [(ngModel)]="selectedCountry"
+                            [settings]="dropdownSettings" formControlName="country">
+                          </angular2-multiselect>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title">City</span>
+                        <div class="pf-field">
+                          <angular2-multiselect [data]="city" [(ngModel)]="selectedCity" [settings]="dropdownSettings"
+                            formControlName="city">
+                          </angular2-multiselect>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('mapDetail',companyContactForm)}">Find On Map</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.mapDetail" type="text" class="form-control"
+                            formControlName="mapDetail" placeholder="info@division.com" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('mapDetail',companyContactForm)"
+                          class="invalid-block">Map Detail Error</span>
+                      </div>
+                      <div class="col-lg-3">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('latitude',companyContactForm)}">Latitude</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.latitude" type="text" class="form-control"
+                            formControlName="latitude" placeholder="" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('latitude',companyContactForm)"
+                          class="invalid-block">Latitude Error</span>
+                      </div>
+                      <div class="col-lg-3">
+                        <span class="pf-title"
+                          [ngClass]="{'invalid-label':isFieldValid('longitude',companyContactForm)}">Longitude</span>
+                        <div class="pf-field">
+                          <input [(ngModel)]="company.companyContactInfo.longitude" type="text" class="form-control"
+                            formControlName="longitude" placeholder="" />
+                        </div>
+                        <span [@validanimation] *ngIf="isFieldValid('longitude',companyContactForm)"
+                          class="invalid-block">Longitude Error</span>
+                      </div>
+                      <div class="col-lg-12">
+                        <button type="button" (click)="submit()">Update</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-container>

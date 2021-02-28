@@ -1,0 +1,70 @@
+<div class="theme-layout" id="scrollup">
+  <section class="overlape">
+    <div class="block no-padding">
+      <div class="parallax scrolly-invisible no-parallax" data-velocity="-.1"
+           style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;"></div>
+      <!-- PARALLAX BACKGROUND IMAGE -->
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <div class="container" style="margin-left: 20px;">
+                <h1>Payment</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="edu-history-sec" id="experience">
+    <div class="edu-history style2">
+      <i></i>
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="edu-hisinfo">
+            <h4></h4>
+          </div>
+        </div>
+        <div class="col-lg-1">
+          <div class="editPosition">
+            <ul>
+              <li><a
+                (click)="openPopup(paymentModal)"
+                title=""><i
+                class="la la-edit"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <modal #paymentModal>
+    <modal-header>
+      <h3>Payment</h3>
+    </modal-header>
+
+    <modal-content>
+      <!--<form (ngSubmit)="buy(paymentForm.value)" [formGroup]="paymentForm" class="paymentForm">-->
+      <form [formGroup]="paymentForm" class="paymentForm">
+        <div class="pf-field">
+          <input class="form-control" formControlName="name" placeholder="Jane Doe" type="text"/>
+        </div>
+        <div class="pf-field">
+          <input formControlName="email" placeholder="Email" type="email"/>
+        </div>
+        <div class="field" id="card-element"></div>
+        <ngx-stripe-card [elementsOptions]="elementsOptions" [options]="cardOptions"></ngx-stripe-card>
+        <div class="division17button">
+          <button (click)="buy(paymentForm.value)" type="submit">
+            BUY
+          </button>
+        </div>
+      </form>
+    </modal-content>
+  </modal>
+</div>

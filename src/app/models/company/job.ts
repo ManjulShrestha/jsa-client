@@ -1,0 +1,53 @@
+import {Base} from '../common-models/baseEntity';
+import {Category} from '../metadata/category';
+import {Country} from '../metadata/country';
+import {City} from '../metadata/city';
+import {Skill} from '../metadata/skill';
+import {Qualification} from '../metadata/qualification';
+import {Industry} from '../metadata/industry';
+import {Gender} from '../metadata/gender';
+import {ExperienceRange} from '../metadata/experienceRange';
+import {CareerLevel} from '../metadata/careerLevel';
+import {OfferedSalaryRange} from '../metadata/offeredSalaryRange';
+import {JobType} from '../metadata/jobType';
+import {JobTitle} from '../metadata/jobTitle';
+import {Company} from './company';
+import {Candidate} from '../candidate/candidate';
+
+export class Job extends Base {
+  email: String;
+  applicationDeadline: Date;
+  description: String;
+  completeAddress: String;
+  mapDetail: String;
+  longitude: number;
+  latitude: number;
+  country: Country;
+  city: City;
+  skillSet: Skill[];
+  qualification: Qualification;
+  industry: Industry;
+  gender: Gender;
+  experienceRange: ExperienceRange;
+  careerLevel : CareerLevel;
+  offeredSalaryRange: OfferedSalaryRange;
+  category: Category;
+  jobType: JobType;
+  jobTitle: JobTitle;
+  company: Company;
+  active:boolean=true;
+  viewed:number;
+  applied: number;
+  featured:number;
+  candidateApplicationSet:Candidate[];
+  candidateViewSet:Candidate[];
+  candidateApplicationSetId:any;
+  candidateViewSetId:any;
+  slots:number;
+  favorite: boolean;
+  candidateApplied:boolean;
+  picturePath:String;
+  companyProfilePic: any;
+  isImageLoading:boolean;
+}
+

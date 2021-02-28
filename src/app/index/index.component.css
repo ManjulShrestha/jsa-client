@@ -1,0 +1,28 @@
+.invalid-block{
+  position:absolute !important;
+  top:3px !important;
+  right:10px !important;
+  font-size: .8em !important;
+  color: #8b0300 !important;
+}
+.available-block {
+  position: absolute !important;
+  top: 3px !important;
+  right: 10px !important;
+  color: green !important;
+  font-size: .8em !important;
+}
+
+.invalid-text{
+  position:absolute !important;
+  top:0px !important;
+  right:10px !important;
+  font-size: .5em !important;
+  color: #8b0300 !important;
+}
+.leave-margin{
+  margin-left:20px;
+}
+input::placeholder {
+  color: #fff;
+}

@@ -1,0 +1,491 @@
+<div *ngIf="this.showLoader == true" class="page-loading">
+  <img alt="" src="../assets/images/loader.gif"/>
+</div>
+<div class="responsive-header five">
+  <div class="responsive-menubar">
+    <div class="res-logo"><a href="index.html" title=""><img alt="" src="http://placehold.it/178x40"/></a></div>
+    <div class="menu-resaction">
+      <div class="res-openmenu">
+        <img alt="" src="../../assets/images/icon.png"/> Menu
+      </div>
+      <div class="res-closemenu">
+        <img alt="" src="../../assets/images/icon2.png"/> Close
+      </div>
+    </div>
+  </div>
+  <div class="responsive-opensec">
+    <div class="btn-extars">
+      <a *ngIf="companyEnable" [routerLink]="['/company/post-job/0']" class="post-job-btn" title="">
+        <i class="la la-plus"></i>Post Jobs</a>
+      <ul *ngIf="loginEnable" class="account-btns">
+        <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+        <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+      </ul>
+      <ul *ngIf="!loginEnable" class="account-btns">
+        <li><a (click)="logOut()"><i class="la la-power-off"></i>Logout</a></li>
+        <li><a (click)="openPopup(changePasswordModal)"><i class="la la-key"></i>Change Password</a>
+      </ul>
+    </div><!-- Btn Extras -->
+    <form class="res-search">
+      <input placeholder="Job title, keywords or company name" type="text" />
+      <button type="submit"><i class="la la-search"></i></button>
+    </form>
+    <div class="responsivemenu">
+      <ul>
+        <li *ngIf="!candidateEnable && !companyEnable">
+          <a [routerLink]="['/']" title="">Home</a>
+        </li>
+        <li><a [routerLink]="['/company/list/']" title="">View Companies</a></li>
+        <li *ngIf="this.usersType == 'candidate' && !candidateEnable">
+          <a [routerLink]="['/candidate/edit-profile']" title="">Edit Profile</a>
+        </li>
+        <li *ngIf="this.usersType == 'company' && !companyEnable">
+          <a [routerLink]="['/company/edit-profile']" title="">Edit Profile</a>
+        </li>
+        <li *ngIf="candidateEnable">
+          <a [routerLink]="['/candidate/dashboard']" title="">Dashboard</a>
+          <ul>
+            <!-- <li><a title="">Resume</a></li> -->
+            <!--<li><a [routerLink]="['/candidate/add-resume']" title="">Resume new</a></li>-->
+            <li><a [routerLink]="['/candidate/profile']" title="">View Profile</a></li>
+            <li><a [routerLink]="['/candidate/edit-profile']" title="">Edit Profile</a></li>
+            <!-- <li><a title="">Job Alert</a></li> -->
+            <li><a [routerLink]="['/candidate/dashboard']" title="">Dashboard</a></li>
+            <!-- <li><a title="">CV Cover Letter</a></li> -->
+            <!-- <li><a title="">Change Password</a></li> -->
+            <!-- <li><a title="">Applied Jobs</a></li> -->
+          </ul>
+        </li>
+        <li *ngIf="companyEnable">
+          <a [routerLink]="['/company/dashboard']" title="">Dashboard</a>
+          <ul>
+            <!-- <li><a [routerLink]="['/company/post-job']" title="">Post Jobs</a></li> -->
+            <li><a [routerLink]="['/company/list-job']" title="">List Jobs</a></li>
+            <!-- <li><a title="">Packages</a></li> -->
+            <li><a [routerLink]="['/company/profile/0']" title="">View Profile</a></li>
+            <li><a [routerLink]="['/company/edit-profile']" title="">Edit Profile</a></li>
+            <li><a [routerLink]="['/company/dashboard']" title="">Employer Dashboard</a></li>
+            <!-- <li><a title="">Transaction</a></li> -->
+            <!-- <li><a title="">Change Password</a></li> -->
+          </ul>
+        </li>
+        <li *ngIf="candidateEnable" class="menu-item-has-children">
+          <a title="">Job</a>
+          <ul>
+            <li><a [routerLink]="['/job/list/0']">Job List</a></li>
+
+          </ul>
+        </li>
+        <li class="menu-item-has-children">
+          <a title="">Pages</a>
+          <ul>
+            <!-- <li><a [routerLink]="['/about']" title="">About Us</a></li>
+            <li><a [routerLink]="['/contact']" title="">Contact Us</a></li>
+            <li><a [routerLink]="['/faq']" title="">FAQ's</a></li>
+            <li><a [routerLink]="['/how-it-works']" title="">How it works</a></li> -->
+            <li><a [routerLink]="['/pricing']" title="">Pricing Plans</a></li>
+            <!-- <li><a [routerLink]="['/terms-and-condition']" title="">Terms & Condition</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<header class="style5">
+  <div class="menu-sec">
+    <div class="container fluid">
+      <nav role="navigation" aria-labelledby="block-mainnavigation-menu" id="block-mainnavigation">
+        <ul>
+          <li *ngIf="!candidateEnable && !companyEnable">
+            <a [routerLink]="['/']" title="">Home</a>
+          </li>
+          <li *ngIf="this.usersType == 'candidate' && !candidateEnable">
+            <a [routerLink]="['/candidate/edit-profile']" title="">Edit Profile</a>
+          </li>
+          <li *ngIf="this.usersType == 'company' && !companyEnable">
+            <a [routerLink]="['/company/edit-profile']" title="">Edit Profile</a>
+          </li>
+          <li *ngIf="candidateEnable">
+            <a [routerLink]="['/candidate/dashboard']" title="">Dashboard</a>
+            <ul>
+              <!-- <li><a title="">Resume</a></li> -->
+              <!--<li><a [routerLink]="['/candidate/add-resume']" title="">Resume new</a></li>-->
+              <li><a [routerLink]="['/candidate/profile']" title="">View Profile</a></li>
+              <li><a [routerLink]="['/candidate/edit-profile']" title="">Edit Profile</a></li>
+              <!-- <li><a title="">Job Alert</a></li> -->
+              <li><a [routerLink]="['/candidate/dashboard']" title="">Dashboard</a></li>
+              <!-- <li><a title="">CV Cover Letter</a></li> -->
+              <!-- <li><a title="">Change Password</a></li> -->
+              <!-- <li><a title="">Applied Jobs</a></li> -->
+            </ul>
+          </li>
+          <li *ngIf="companyEnable">
+            <a [routerLink]="['/company/dashboard']" title="">Dashboard</a>
+            <ul>
+              <!-- <li><a [routerLink]="['/company/post-job']" title="">Post Jobs</a></li> -->
+              <li><a [routerLink]="['/company/list-job']" title="">List Jobs</a></li>
+              <!-- <li><a title="">Packages</a></li> -->
+              <li><a [routerLink]="['/company/profile/0']" title="">View Profile</a></li>
+              <li><a [routerLink]="['/company/edit-profile']" title="">Edit Profile</a></li>
+              <li><a [routerLink]="['/company/dashboard']" title="">Employer Dashboard</a></li>
+              <!-- <li><a title="">Transaction</a></li> -->
+              <!-- <li><a title="">Change Password</a></li> -->
+            </ul>
+          </li>
+          <li *ngIf="adminEnable">
+            <a [routerLink]="['admin/dashboard']" title="">Dashboard</a>
+          </li>
+
+          <li>
+            <a [routerLink]="['/company/list/']" title="" class="someClass">View Companies</a>
+            <ul class="container1">
+              <div class="nav-content active nav-item jobs menu-item">
+                <div class="nav-content-inner">
+                  <div class="views-element-container">
+                    <div class="view gradient view-navigation-job-categories view-id-navigation_job_categories"
+                         style="padding-bottom: 5px;">
+
+                      <div class="row">
+                        <div class="views-row col-md-4 col-lg-4">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/company/list/']"><a>All companies</a></div>
+                            <a><i class="la la-stack"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-finance views-row col-md-2 col-lg-2 ">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/company/list/']"><a>Best Companies To Work</a><br/>
+                            </div>
+                            <a>
+                              <i class="la la-shield"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-data-analytics views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/company/list/']"><a>Coolest Tech Offices</a><br/>
+                            </div>
+                            <a><i class="la la-thumbs-up"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-design views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/company/list/']"><a>Best Software Engineer
+                              Jobs</a><br/>
+                            </div>
+                            <a><i class="la la-trophy"></i></a>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+
+          </li>
+
+          <li *ngIf="candidateEnable" class="menu-item-has-children">
+            <a title="" class="jobCategory">Job</a>
+            <!--<ul>-->
+            <!--<li><a [routerLink]="['/job/list/0']">Job List</a></li>-->
+            <!--</ul>-->
+            <ul>
+              <div class="nav-content active nav-item jobs menu-item">
+                <div class="nav-content-inner">
+                  <!-- <div class="submenu">
+                     <a href="/job-slots">
+                       <h3 class="title">Looking<br>to hire?</h3>
+                       <div class="headline">Give the community<br>something worth<br>applying for.</div>
+                     </a>
+                     <div class="more-link">
+                       <a href="/job-slots">Post a job</a>
+                     </div>
+                   </div>-->
+                  <div class="views-element-container">
+                    <div class="view gradient view-navigation-job-categories view-id-navigation_job_categories ">
+
+                      <div class="row">
+
+                        <div class="views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/0']"><a>All jobs</a></div>
+                            <a><i class="la la-stack"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-finance views-row col-md-2 col-lg-2 ">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/1']"><a>Finance</a></div>
+                            <a>
+                              <i class="la la-money"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-data-analytics views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/2']"><a>Data + Analytics</a>
+                            </div>
+                            <a><i class="la la-line-chart"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-design views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/3']"><a>Design + UX</a></div>
+                            <a><i class="la la-desktop"></i></a>
+                          </div>
+
+                        </div>
+                        <div class="category-wrapper-developer views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/4']"><a>Developer +
+                              Engineer</a></div>
+                            <a><i class="la la-code"></i></a>
+                          </div>
+                        </div>
+                        <!--</div>-->
+
+                        <!--</div>-->
+
+
+                        <div class="category-wrapper-marketing views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/5']"><a>Marketing</a></div>
+                            <a><i class="la la-bank"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-operations views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/6']"><a>Operations</a></div>
+                            <a><i class="la la-cog"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-product views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/7']"><a>Product</a></div>
+                            <a><i class="la la-shopping-cart"></i></a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-project-mgmt views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/8']"><a>Project Mgmt</a>
+                            </div>
+                            <a><i class="la la-suitcase"></i> </a>
+                          </div>
+                        </div>
+                        <div class="category-wrapper-sales views-row col-md-2 col-lg-2">
+                          <div class="p-category">
+                            <div class="title" [routerLink]="['/job/list/9']"><a>Sales</a></div>
+                            <a><i class="la la-credit-card"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </ul>
+          </li>
+          <!-- <li>
+            <a [routerLink]="['/about']" title="">About Us</a>
+          </li>
+          <li><a [routerLink]="['/contact']" title="">Contact Us</a></li>
+          <li><a [routerLink]="['/faq']" title="">FAQ's</a></li>
+          <li><a [routerLink]="['/how-it-works']" title="">How it works</a></li> -->
+          <li><a [routerLink]="['/pricing']" title="">Pricing Plans</a></li>
+          <li><a [routerLink]="['/terms-and-condition']" title="">Terms & Conditions</a></li>
+        </ul>
+      </nav>
+      <div class="btn-extars">
+        <a [routerLink]="['/company/post-job/0']" title="" class="post-job-btn" *ngIf="companyEnable"><i
+          class="la la-plus"></i>Post Jobs</a>
+        <ul class="account-btns" *ngIf="loginEnable">
+          <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+          <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+        </ul>
+        <ul class="account-btns" *ngIf="!loginEnable">
+          <li><a (click)="logOut()"><i class="la la-power-off"></i>Logout</a></li>
+          <li><a (click)="openPopup(changePasswordModal)"><i class="la la-key"></i>Change Password</a>
+          </li>
+        </ul>
+      </div><!-- Btn Extras -->
+    </div>
+  </div>
+</header>
+
+<!-- SIGNUP POPUP -->
+<div class="account-popup-area signup-popup-box">
+  <div class="account-popup">
+    <span class="close-popup" id="signUpCloseWindow"><i class="la la-close"></i></span>
+    <h3>Sign Up</h3>
+    <div class="select-user">
+      <span (click)="setUserType(candidate)"> Candidate</span>
+      <span (click)="setUserType(employer)"> Employer</span>
+    </div>
+    <div *ngIf="errorMessage" class="error-msgFullname">
+      <p>
+        *Please select your user type.</p>
+    </div>
+    <form [formGroup]="signupForm" class="signup-form" novalidate>
+      <div *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched" class="error-msgFullname">
+        <p [hidden]="!signupForm.controls['name'].errors.required">
+          *Full Name is required.</p>
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="name" placeholder="Full Name" type="text">
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="userName" placeholder="Display Name" type="text">
+      </div>
+
+
+      <div *ngIf="signupForm.controls['email'].invalid &&  signupForm.controls['email'].touched" class="error-msgEmail">
+        <p [hidden]="!signupForm.controls['email'].errors.required">* Email is required.</p>
+        <p [hidden]="!signupForm.controls['email'].errors.email">* Email is invalid.</p>
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="email" placeholder="Email" type="text" (click)="setEmailTaken()">
+        <i class="la la-envelope-o"></i>
+      </div>
+      <div
+        *ngIf="signupForm.controls['password'].errors && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+        class=" error-msgPassword">
+        <p [hidden]="!signupForm.controls['password'].errors.required">* Password is required.</p>
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="password" placeholder="Password" type="password">
+        <i class="la la-key"></i>
+      </div>
+
+      <div
+        *ngIf="signupForm.controls['confirmPassword'].errors && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)"
+        class="error-msgConfirmPass">
+        <p
+          [hidden]="!signupForm.controls['confirmPassword'].errors.required && signupForm.controls['confirmPassword'] == signupForm.controls['password']">
+          * Password mismatch.
+        </p>
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+        <i class="la la-key"></i>
+      </div>
+      <div
+        *ngIf="signupForm.controls['contactno'].errors && (signupForm.controls['contactno'].dirty || signupForm.controls['contactno'].touched)"
+        class=" error-msgPhone">
+        <p [hidden]="!signupForm.controls['contactno'].errors.required">* Phone number is required.</p>
+      </div>
+      <div class="cfield">
+        <input class="form-control" formControlName="contactno" placeholder="Phone Number" type="text">
+        <i class="la la-phone"></i>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="saveUser()">Signup</button>
+    </form>
+    <div class="extra-login">
+      <span>Or</span>
+      <div class="login-social">
+        <a class="fb-login" href="#" title=""><i class="la la-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="account-popup-area signin-popup-box">
+  <div class="account-popup">
+    <span class="close-popup" id="loginCloseWindow"><i class="la la-close"></i></span>
+    <h3>User Login</h3>
+    <form class="login-form" [formGroup]="loginForm">
+      <div *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched"
+           class="error-msgFullname">
+        <p [hidden]="!loginForm.controls['userName'].errors.required">
+          *User Name is required.</p>
+      </div>
+      <div class="cfield">
+        <input type="text" name="UserName" class="form-control" placeholder="Username" formControlName="userName"
+               (keyup.enter)="login($event)" required>
+        <i class="la la-user"></i>
+      </div>
+      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+           class="error-msgFullname">
+        <p [hidden]="!loginForm.controls['password'].errors.required">
+          *Password is required.</p>
+      </div>
+      <div class="cfield">
+        <input type="password" name="Password" class="form-control" placeholder="***********" formControlName="password"
+               (keyup.enter)="login($event)" required>
+        <i class="la la-key"></i>
+      </div>
+      <p class="remember-label">
+        <!--<input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>-->
+        <mat-checkbox name="cb" id="cb1" class="remember-label">Remember me</mat-checkbox>
+      </p>
+      <a href="#" title="">Forgot Password?</a>
+      <button type="button" class="btn " (click)="login($event)" style="color:#fff">Login</button>
+      <div *ngIf="loginErrorMessage" class="error-loginError">
+        <p>
+          *{{loginErrorMessage}}</p>
+      </div>
+    </form>
+    <div class="extra-login">
+      <span>Or</span>
+      <div class="login-social">
+        <a class="fb-login" href="#" title=""><i class="la la-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #changePasswordModal>
+  <modal-header>
+    <h4><b>Change Password</b></h4>
+  </modal-header>
+
+  <modal-content>
+    <div class="account-popup change-password-form">
+      <form [formGroup]="changePasswordForm" class="signup-form">
+        <div
+          *ngIf="changePasswordForm.controls['oldPassword'].errors && (changePasswordForm.controls['oldPassword'].dirty || changePasswordForm.controls['oldPassword'].touched)"
+          class=" error-msgPassword">
+          <p [hidden]="!changePasswordForm.controls['oldPassword'].errors.required">* Old Password is required.</p>
+        </div>
+        <div class="cfield">
+          <input class="form-control" formControlName="oldPassword" placeholder="Old Password" type="password">
+          <i class="la la-key"></i>
+        </div>
+        <div
+          *ngIf="changePasswordForm.controls['password'].errors && (changePasswordForm.controls['password'].dirty || changePasswordForm.controls['password'].touched)"
+          class=" error-msgPassword">
+          <!--<p [hidden]="!changePasswordForm.controls['password'].errors.required">* Password is required.</p>-->
+          <p
+            [hidden]="!changePasswordForm.controls['password'].errors.required && changePasswordForm.controls['password'] == changePasswordForm.controls['oldPassword'] ">
+            * Old/new passwords cannot be same.
+          </p>
+        </div>
+        <div class="cfield">
+          <input class="form-control" formControlName="password" placeholder="New Password" type="password">
+          <i class="la la-key"></i>
+        </div>
+        <div
+          *ngIf="changePasswordForm.controls['confirmPassword'].errors && (changePasswordForm.controls['confirmPassword'].dirty || changePasswordForm.controls['confirmPassword'].touched)"
+          class="error-msgConfirmPass">
+          <p
+            [hidden]="!changePasswordForm.controls['confirmPassword'].errors.required && changePasswordForm.controls['confirmPassword'] == changePasswordForm.controls['password']">
+            * Password mismatch.
+          </p>
+        </div>
+        <div class="cfield">
+          <input class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+          <i class="la la-key"></i>
+        </div>
+      </form>
+    </div>
+  </modal-content>
+
+  <modal-footer>
+    <div class="division17button">
+      <button (click)="saveChangedPassword()">Update Password</button>
+    </div>
+  </modal-footer>
+</modal>

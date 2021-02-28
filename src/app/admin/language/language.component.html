@@ -1,0 +1,98 @@
+<!--<ng-container *access="{condition:['admin_dashboard'],requiredAll:true,redirect:true}">-->
+<div class="theme-layout" id="scrollup">
+  <div *ngIf="this.showLoader == true" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif"/>
+  </div>
+  <section>
+    <div class="block no-padding" style="margin-top: 50px">
+      <div class="container">
+        <div class="row no-gape">
+          <div class="col-lg-6 column">
+            <div class="padding-left">
+              <div class="manage-jobs-sec">
+                <h3>Manage Language</h3>
+                <table>
+                  <thead>
+                  <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td class="pull-right">Action</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let language  of this.languageList;">
+                    <td *ngIf="!language.deleted">
+                      <div class="table-list-title">
+                        <h3><a title="">{{language.id}}</a></h3>
+
+                      </div>
+                    </td>
+                    <td *ngIf="!language.deleted">
+                      <div class="table-list-title">
+                        <h3><a title="">{{language.nameEnglish}}</a></h3>
+
+                      </div>
+                    </td>
+
+                    <td *ngIf="!language.deleted">
+                      <ul class="action_job pull-right">
+                        <li><span>Edit</span><a (click)="openPopup(language,languageModal,'agerange','edit')"
+                                                title=""><i
+                          class="la la-pencil"></i></a></li>
+
+                      </ul>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <a (click)="addLanguage(languageModal)" class="add" setposition="right"
+                   title=""><i
+                  class="la la-plus-circle"></i> Add new</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <modal #languageModal>
+    <modal-header>
+      <h3>{{this.action | titlecase}} Language</h3>
+    </modal-header>
+
+    <modal-content>
+      <div *ngIf="language">
+        <form (submit)="saveLanguage('save')"
+              [formGroup]="languageForm">
+          <div *ngIf="!language.deleted">
+            <div class="row">
+              <div class="col-lg-10">
+                <span class="pf-title">Name</span>
+                <div class="pf-field">
+                  <input [(ngModel)]="language.nameEnglish"
+                         class="form-control"
+                         formControlName="nameEnglish" required
+                         type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 division17button" style="float: right !important;">
+            <button>
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </modal-content>
+
+    <modal-footer>
+      <button (click)="closeModal()" class="btn btn-primary">close</button>
+    </modal-footer>
+  </modal>
+</div>
+<!--</ng-container>-->
+
+

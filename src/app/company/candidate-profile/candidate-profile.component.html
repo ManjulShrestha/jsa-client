@@ -1,0 +1,210 @@
+<ng-container *access="{condition:['company_dashboard'],requiredAll:true,redirect:true}">
+
+    <section>
+      <div *ngIf="this.showLoader" class="page-loading">
+        <img alt="" src="../assets/images/loader.gif"/>
+      </div>
+      <div class="block no-padding">
+        <div class="parallax layer color black2 no-parallax" data-velocity="-.1"
+             style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 570.28px transparent;"></div>
+        <!-- PARALLAX BACKGROUND IMAGE -->
+        <div class="container fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="inner-header">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6">
+                    </div>
+                    <div class="col-lg-6">
+                      <div *access="{condition:['candidate_contact_info'],requiredAll:true,redirect:false}"
+                           class="action-inner-div17 division17link">
+                        <div *ngIf="this.candidate.candidateResume.pdfPath" class="division17link">
+                          <a (click)="getPDFFromService(this.candidate.candidateResume.pdfPath, 'pdf')" title="">
+                            <i class="la la-eye"></i>
+                            <span>View Resume</span>
+                          </a>
+
+                        </div>
+                        <a href="{{email}}"><i class="la la-envelope-o"></i>Contact {{this.candidate.name | titlecase}}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overlape">
+      <div class="block remove-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="cand-single-user">
+                <div class="share-bar circle">
+                  <a (click)="google()" *ngIf="this.candidate.candidateSocialInfo.google" class="share-google"
+                     title="Google"><i class="la la-google"></i></a>
+                  <a (click)="facebook()" *ngIf="this.candidate.candidateSocialInfo.facebook" class="share-fb"
+                     target="_blank" title="Facebook"><i class="la la-facebook"></i></a>
+                  <a (click)="twitter()" *ngIf="this.candidate.candidateSocialInfo.twitter" class="share-twitter"
+                     target="_blank" title="Twitter"><i class="la la-twitter"></i></a>
+                </div>
+
+                <div class="can-detail-s">
+                  <div class="cst">
+                    <img *ngIf="!isImageLoading; else noImageFound" [src]="candidateProfilePic">
+                    <ng-template #noImageFound>
+                      <img src="../../../assets/images/avatar-black.png">
+                    </ng-template>
+                  </div>
+                  <h3>{{this.candidate.name | titlecase}}</h3>
+                  <div *ngFor="let workExp of this.candidate.candidateResume.candidateWorkExperiences">
+                    <div *ngIf="workExp.present && !workExp.deleted">
+                      <span><i>{{workExp.title}}</i> at {{workExp.company}}</span>
+                    </div>
+                  </div>
+                  <p>Member Since, {{candidate.addedDate | date:'MMM dd, yyyy'}}</p>
+                  <p
+                    *access="{condition:['candidate_contact_info'],requiredAll:true,redirect:false}">{{candidate.candidateContactInfo.email}}</p>
+                  <p *access="{condition:['candidate_contact_info'],requiredAll:true,redirect:false}"><i
+                    class="la la-map-marker"></i>{{candidate.candidateContactInfo.mapDetail}}
+                    /{{candidate.candidateContactInfo.country.nameEnglish}}
+                  </p>
+                </div>
+              </div>
+              <div class="cand-details-sec">
+                <div class="row">
+                  <div class="col-lg-8 column">
+                    <div class="cand-details" id="about">
+                      <h2>Candidates About</h2>
+                      {{candidate.description}}
+                      <div class="edu-history-sec" id="education">
+                        <h2>Education</h2>
+                        <div *ngFor="let education of this.candidate.candidateResume.candidateEducations">
+                          <div *ngIf="education.deleted != true">
+                            <div class="edu-history">
+                              <i class="la la-graduation-cap"></i>
+                              <div class="edu-hisinfo">
+                                <h3>{{education.educationType}}</h3>
+                                <h5>{{education.institute}}</h5>
+                                <p>{{education.description}}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="edu-history-sec" id="experience">
+                        <h2>Work & Experience</h2>
+                        <div *ngFor="let workExp of this.candidate.candidateResume.candidateWorkExperiences">
+                          <div *ngIf="!workExp.deleted">
+                            <div class="edu-history style2">
+                              <i></i>
+                              <div class="row">
+                                <div class="col-lg-10">
+                                  <div class="edu-hisinfo">
+                                    <h3>{{workExp.title}} <span>{{workExp.company}}</span></h3>
+                                    <p>{{workExp.description}}</p>
+                                  </div>
+                                </div>
+                                <div class="col-lg-2">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="edu-history-sec" id="skills">
+                        <h2>Professional Skills</h2>
+                        <div *ngFor="let skill of this.candidate.candidateResume.candidateProfessionalSkills">
+                          <div *ngIf="skill.deleted != true">
+                            <span>{{skill.skillHeading}}</span>
+                            <progress-bar [color]="'#f64a84'" [progress]="skill.percentage">
+                            </progress-bar>
+
+                          </div>
+                        </div>
+                        <br/><br/>
+                      </div>
+
+
+                      <div class="edu-history-sec" id="awards">
+                        <h2>Awards</h2>
+                        <div *ngFor="let award of this.candidate.candidateResume.candidateAwards">
+                          <div *ngIf="!award.deleted">
+                            <div class="edu-history style2 ">
+                              <i></i>
+                              <div class="row">
+                                <div class="col-lg-10">
+                                  <div class="edu-hisinfo">
+                                    <h3>{{award.title}}</h3>
+                                    <p>{{award.description}}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 column">
+                    <div class="job-overview">
+                      <h3><b>Job Overview</b></h3>
+                      <ul>
+                        <li><i class="la la-money"></i>
+                          <h3>Offerd Salary</h3>
+                          <span>{{this.candidate.currentSalaryMinimum ? this.candidate.currentSalaryMinimum : 'not specified'}}
+                            -{{this.candidate.currentSalaryMaximum ? this.candidate.currentSalaryMaximum : 'not specified'}}</span>
+                        </li>
+                        <li><i class="la la-money"></i>
+                          <h3>Expected Salary</h3>
+                          <span>{{this.candidate.expectedSalaryMinimum ? this.candidate.expectedSalaryMinimum : 'not specified'}}
+                            -{{this.candidate.expectedSalaryMaximum ? this.candidate.expectedSalaryMaximum : 'not specified'}}</span>
+                        </li>
+                        <li><i class="la la-mars-double"></i>
+                          <h3>Gender</h3>
+                          <span>{{this.candidate.gender ? this.candidate.gender.nameEnglish : 'not specified' }}</span>
+                        </li>
+                        <li><i class="la la-long-arrow-up"></i>
+                          <h3>Age range</h3>
+                          <span>{{this.candidate.ageRange ? this.candidate.ageRange.nameEnglish : 'not specified'}}</span>
+                        </li>
+                        <li><i class="la la-thumb-tack"></i>
+                          <h3>Career Level</h3>
+                          <span>{{this.candidate.jobTitle ? this.candidate.jobTitle.nameEnglish : 'not specified'}}</span>
+                        </li>
+                        <!--<li><i class="la la-puzzle-piece"></i><h3>Industry</h3><span>Management</span></li>-->
+                        <li><i class="la la-shield"></i>
+                          <h3>Experience</h3>
+                          <span>{{this.candidate.experienceRange ? this.candidate.experienceRange.nameEnglish : 'not specified'}}
+                            years</span></li>
+                        <li><i class="la la-line-chart"></i>
+                          <h3>Qualification</h3>
+                          <span>{{this.candidate.educationType ? this.candidate.educationType.nameEnglish : 'not specified'}}</span>
+                        </li>
+                        <li><i class="la la-language"></i>
+                          <h3>Language</h3>
+                          <span>{{this.candidate.language ? this.candidate.language.nameEnglish : 'not specified'}}</span>
+                        </li>
+                        <li><i class="la la-laptop "></i>
+                          <h3>Skills</h3>
+                          <div *ngFor="let skill of this.candidate.categorySet">
+                            <span>{{skill.nameEnglish}}</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div><!-- Job Overview -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</ng-container>

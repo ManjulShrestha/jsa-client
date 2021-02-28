@@ -1,0 +1,156 @@
+<!--<ng-container *access="{condition:['company_dashboard','candidate_dashboard'],requiredAll:false,redirect:true}">-->
+
+  <div class="theme-layout webView" id="scrollup">
+    <!-- <section class="overlape">
+      <div class="block no-padding">
+        <div data-velocity="-.1"
+          style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 422.28px transparent;"
+          class="parallax scrolly-invisible no-parallax"></div>
+        <div class="container fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="inner-header">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <div *ngIf="this.showLoader" class="page-loading">
+      <img alt="" src="../assets/images/loader.gif"/>
+    </div>
+
+    <section>
+      <div class="block">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 column">
+              <div class="job-single-sec style3">
+                <div class="job-head-wide">
+                  <div class="row">
+                    <div class="col-lg-10">
+                      <div class="job-single-head3 emplye">
+                        <div class="job-thumb"> <span><img *ngIf="!company.isImageLoading; else noImageFound"
+                                                           [src]="company.companyProfilePic"
+                                                           alt="Place image title">
+                            <ng-template #noImageFound>
+                              <img src="../../../assets/images/avatar-company.png">
+                            </ng-template>
+                          </span></div>
+                        <div class="job-single-info3">
+                          <h3>{{company.name}}</h3>
+                          <span><i class="la la-map-marker"></i>{{company.companyContactInfo.mapDetail}}</span>
+                        </div>
+                      </div><!-- Job Head -->
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="share-bar">
+                        <a class="share-google" title="">
+                          <i class="la la-google"></i>
+                        </a>
+                        <a class="share-fb" title="">
+                          <i class="la la-facebook"></i>
+                        </a>
+                        <a class="share-twitter" title="">
+                          <i class="la la-twitter"></i>
+                        </a>
+                      </div>
+                      <div class="emply-btns">
+                        <a class="seemap" style="background:#f44a08" title=""><i class="la la-map-marker"></i> See On
+                          Map</a>
+                        <a (click)="followCompany()" *ngIf="!isCompany" class="followus" title=""><i
+                          class="la la-paper-plane"></i> {{follow}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="job-wide-devider">
+                  <div class="row">
+                    <div class="col-lg-8 column">
+                      <div class="job-details">
+                        <h3>About Business Network</h3>
+                        <p>{{company.description}}</p>
+                        <slideshow
+                          [autoPlayWaitForLazyLoad]="true"
+                          [autoPlay]="true"
+                          [height]="'200px'"
+                          [imageUrls]="imageUrls"
+                          [lazyLoad]="imageUrls?.length > 1"
+                          [minHeight]="'225px'"
+                          [showArrows]="true"
+                        >
+                        </slideshow>
+                      </div>
+                      <div class="recent-jobs">
+                        <h3>Jobs from Business Network</h3>
+                        <div class="job-list-modern">
+                          <div *ngFor="let job of company.jobSet" class="job-listings-sec no-border">
+                            <div class="job-listing wtabs noimg">
+                              <div class="job-title-sec">
+                                <h3><a title="">{{job.jobTitle.nameEnglish}}</a></h3>
+                                <span>{{job.description}}</span>
+                                <div class="job-lctn"><i class="la la-map-marker"></i>{{job.completeAddress}}</div>
+                              </div>
+                              <div class="job-style-bx">
+                                <span [routerLink]="['/job/view/'+job.id]"
+                                      class="job-is ft">{{job.jobType.nameEnglish}}</span>
+                                <span class="fav-job"><i class="la la-heart-o"></i></span>
+                                <i>Post Date: {{job.addedDate  | date:'MMM dd, yyyy'}}</i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 column">
+                      <div class="job-overview">
+                        <h3>Company Information</h3>
+                        <ul>
+                          <li><i class="la la-eye"></i>
+                            <h3>Viewed </h3><span>{{company.viewers}}</span>
+                          </li>
+                          <li><i class="la la-file-text"></i>
+                            <h3>Posted Jobs</h3><span>{{company.jobSet.length}}</span>
+                          </li>
+                          <li><i class="la la-map"></i>
+                            <h3>Locations</h3><span>{{company.companyContactInfo.mapDetail}}</span>
+                          </li>
+                          <li><i class="la la-bars"></i>
+                            <h3>Categories</h3><span
+                              *ngFor="let category  of company.categorySet; let isLast=last">{{category.nameEnglish}}{{isLast ? '' : ', '}}</span>
+                          </li>
+                          <li><i class="la la-clock-o"></i>
+                            <h3>Since</h3><span>{{company.startDate | date}}</span>
+                          </li>
+                          <li><i class="la la-users"></i>
+                            <h3>Team Size</h3><span>{{company.teamSize.nameEnglish}}</span>
+                          </li>
+                          <li><i class="la la-user"></i>
+                            <h3>Followers</h3><span>{{company.followers}}</span>
+                          </li>
+                        </ul>
+                      </div><!-- Job Overview -->
+                      <div class="quick-form-job">
+                        <h3>Contact Business Network</h3>
+                        <form>
+                          <input placeholder="Enter your Name *" type="text"/>
+                          <input placeholder="Email Address*" type="text"/>
+                          <input placeholder="Phone Number" type="text"/>
+                          <textarea placeholder="Message should have more than 50 characters"></textarea>
+                          <div>
+                            <button class="btn profileButton" type="button">Send Email</button>
+                          </div>
+                          <span>You accepts our <a title="">Terms and Conditions</a></span>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+<!--</ng-container>-->

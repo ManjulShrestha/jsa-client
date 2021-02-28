@@ -1,0 +1,138 @@
+<div class="theme-layout webView" id="scrollup">
+  <div *ngIf="this.showLoader == true" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif" />
+    <!--<span>Skip Loader</span>-->
+  </div>
+  <section>
+    <div class="block remove-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="account-popup-area signup-popup-box static">
+              <div class="account-popup">
+                <h3>Sign Up</h3>
+                <div class="select-user">
+                  <span (click)="setUserType(candidate)"> Candidate</span>
+                  <span (click)="setUserType(employer)"> Employer</span>
+                </div>
+                <div *ngIf="errorMessage" class="error-msgFullname">
+                  <p>
+                    *Please select your user type.</p>
+                </div>
+                <form [formGroup]="signupForm" class="signup-form" novalidate>
+                  <div *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched"
+                    class="error-msgFullname">
+                    <p [hidden]="!signupForm.controls['name'].errors.required">
+                      *Full Name is required.</p>
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="name" placeholder="Full Name" type="text">
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="userName" placeholder="Display Name" type="text">
+                  </div>
+
+
+                  <div *ngIf="signupForm.controls['email'].invalid &&  signupForm.controls['email'].touched"
+                    class="error-msgEmail">
+                    <p [hidden]="!signupForm.controls['email'].errors.required">* Email is required.</p>
+                    <p [hidden]="!signupForm.controls['email'].errors.email">* Email is invalid.</p>
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="email" placeholder="Email" type="text"
+                      (click)="setEmailTaken()">
+                    <i class="la la-envelope-o"></i>
+                  </div>
+                  <div
+                    *ngIf="signupForm.controls['password'].errors && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+                    class=" error-msgPassword">
+                    <p [hidden]="!signupForm.controls['password'].errors.required">* Password is required.</p>
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="password" placeholder="Password" type="password">
+                    <i class="la la-key"></i>
+                  </div>
+
+                  <div
+                    *ngIf="signupForm.controls['confirmPassword'].errors && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)"
+                    class="error-msgConfirmPass">
+                    <p
+                      [hidden]="!signupForm.controls['confirmPassword'].errors.required && signupForm.controls['confirmPassword'] == signupForm.controls['password']">
+                      * Password mismatch.
+                    </p>
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="confirmPassword" placeholder="Confirm Password"
+                      type="password">
+                    <i class="la la-key"></i>
+                  </div>
+                  <div
+                    *ngIf="signupForm.controls['contactno'].errors && (signupForm.controls['contactno'].dirty || signupForm.controls['contactno'].touched)"
+                    class=" error-msgPhone">
+                    <p [hidden]="!signupForm.controls['contactno'].errors.required">* Phone number is required.</p>
+                  </div>
+                  <div class="cfield">
+                    <input class="form-control" formControlName="contactno" placeholder="Phone Number" type="text">
+                    <i class="la la-phone"></i>
+                  </div>
+                  <button type="button" class="btn btn-primary" (click)="saveUser()">Signup</button>
+                </form>
+                <div class="extra-login">
+                  <span>Or</span>
+                  <div class="login-social">
+                    <a class="fb-login" href="#" title=""><i class="la la-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="account-popup-area signin-popup-box static">
+              <div class="account-popup">
+                <h3>User Login</h3>
+                <form class="login-form" [formGroup]="loginForm">
+                  <div *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched"
+                    class="error-msgFullname">
+                    <p [hidden]="!loginForm.controls['userName'].errors.required">
+                      *User Name is required.</p>
+                  </div>
+                  <div class="cfield">
+                    <input type="text" class="form-control" placeholder="Username" formControlName="userName"
+                      (keyup.enter)="login($event)" required>
+                    <i class="la la-user"></i>
+                  </div>
+                  <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+                    class="error-msgFullname">
+                    <p [hidden]="!loginForm.controls['password'].errors.required">
+                      *Password is required.</p>
+                  </div>
+                  <div class="cfield">
+                    <input type="password" name="Password" class="form-control" placeholder="***********"
+                      formControlName="password" (keyup.enter)="login($event)" required>
+                    <i class="la la-key"></i>
+                  </div>
+                  <p class="remember-label">
+                    <input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>
+                  </p>
+                  <a href="#" title="">Forgot Password?</a>
+                  <button type="button" class="btn btn-primary" (click)="login($event)">Login</button>
+                  <div *ngIf="loginErrorMessage" class="error-loginError">
+                    <p>
+                      *{{loginErrorMessage}}</p>
+                  </div>
+                </form>
+                <div class="extra-login">
+                  <span>Or</span>
+                  <div class="login-social">
+                    <a class="fb-login" title=""><i class="la la-linkedin"></i></a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

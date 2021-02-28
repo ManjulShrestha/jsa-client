@@ -1,0 +1,105 @@
+<ng-container *access="{condition:['company_dashboard'],requiredAll:true,redirect:true}">
+  <div class="theme-layout webView" id="scrollup">
+
+    <!-- <section class="overlape">
+      <div class="block no-padding">
+        <div data-velocity="-.1"
+          style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 422.28px transparent;"
+          class="parallax scrolly-invisible no-parallax"></div>
+        <div class="container fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="inner-header">
+                <h3>Welcome {{company.name | titlecase}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section>
+      <div class="block no-padding">
+        <div class="container">
+          <div class="row no-gape">
+            <div class="col-lg-3 column border-right">
+              <app-sidebar></app-sidebar>
+            </div>
+
+            <div class="col-lg-9 column">
+              <div class="padding-left">
+                <div class="manage-jobs-sec">
+                  <h3>Dashboard</h3>
+                  <div class="cat-sec">
+                    <div class="row no-gape">
+                      <div class="col-lg-4 col-md-4 col-sm-12"
+                        *access="{condition:['job_post'],requiredAll:true,redirect:false}">
+                        <div class="p-category">
+                          <a (click)="postJob()">
+                            <i class="la la-briefcase"></i>
+                            <span>Post Job</span>
+                            <p>{{jobsPosted}} / {{(numberOfJobs <0)? '*':numberOfJobs}} Jobs</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category view-resume-list">
+                          <a [routerLink]="['/company/profile/0']">
+                            <i class="la la-eye"></i>
+                            <span>Profile</span>
+                            <p>View Profile</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category">
+                          <a [routerLink]="['/company/edit-profile']">
+                            <i class="la la-file"></i>
+                            <span>My Profile</span>
+                            <p>Edit Profile</p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cat-sec">
+                    <div class="row no-gape">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category">
+                          <a [routerLink]="['/company/list-job']" title="">
+                            <i class="la la-list"></i>
+                            <span>Posted Job</span>
+                            <p>{{company.jobSet.length}} Jobs Posted</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category follow-companies-popup">
+                          <a [routerLink]="['/company/candidate-list']">
+                            <i class="la la-user"></i>
+                            <span>Company Followers</span>
+                            <p>{{company.candidateFollowSetId.length}} Candidates</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12"
+                        *access="{condition:['applied_candidates'],requiredAll:true,redirect:false}">
+                        <div class="p-category">
+                          <a [routerLink]="['/company/applied']">
+                            <i class="la la-file"></i>
+                            <span>Applied Candidates</span>
+                            <p>{{application}} Applications</p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-container>

@@ -1,0 +1,76 @@
+<!--<ng-container *access="{condition:['admin_dashboard'],requiredAll:true,redirect:true}">-->
+
+<div class="theme-layout" id="scrollup">
+  <div *ngIf="this.showLoader == true" class="page-loading">
+    <img alt="" src="../assets/images/loader.gif"/>
+  </div>
+  <div class="block remove-bottom" style="margin-top:50px !important; ">
+    <div class="container">
+      <div class="row no-gape">
+        <h3>Company list</h3>
+        <div class="col-lg-12 ">
+          <div class="emply-list-sec" *ngFor="let company of companys">
+
+              <div class="job-thumb">
+                  <span><img [src]="company.companyProfilePic" alt="Place image title"
+                             *ngIf="!company.isImageLoading; else noImageFound">
+                    <ng-template #noImageFound>
+                      <img src="../../../assets/images/avatar-company.png">
+                    </ng-template>
+                  </span>
+              </div>
+
+              <div class="emply-list-info">
+                <!--<div class="emply-pstn">{{company.jobCount}} Jobs Posted</div>-->
+                <h3><a title="">{{company.name}}</a></h3>
+                <h5>{{company.jobCount}} Jobs Posted</h5>
+                <span
+                  *ngFor="let category  of company.categorySet; let isLast=last">{{category.nameEnglish}}{{isLast ? '' : ', '}}</span>
+
+
+                <h6><i class="la la-map-marker"></i> {{company.companyContactInfo.mapDetail}}</h6>
+                <p>{{company.description}}</p>
+              </div>
+            <div class="shortlists pull-right">
+              <a [routerLink]="['/company/profile/'+company.id]">View Profile
+              </a>
+            </div>
+            <div class="shortlists pull-right">
+              <a
+                (click)="openPopup(company,deleteModal,'company','delete')"
+                title=""><i
+                class="la la-trash-o"></i>Delete</a>
+            </div>
+
+
+          </div>
+          <div class="pagination">
+            <div (click)="populateCompanyList()" class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
+          </div><!-- Pagination -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <modal #deleteModal>
+    <modal-header>
+      Confirmation
+    </modal-header>
+
+    <modal-content>
+      <h4>Do you want to delete?</h4>
+    </modal-content>
+
+    <modal-footer>
+      <div class="division17button">
+        <button (click)="closeModal()">No</button>
+        <button (click)="saveCompany('delete')">Yes</button>
+      </div>
+    </modal-footer>
+  </modal>
+</div>
+<!--</ng-container>-->
+
+
+
+

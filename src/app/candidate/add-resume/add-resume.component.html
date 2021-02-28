@@ -1,0 +1,705 @@
+<div class="theme-layout" id="scrollup">
+  <section class="overlape">
+    <div class="block no-padding">
+      <div class="parallax scrolly-invisible no-parallax"
+           data-velocity="-.1"
+           style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;"></div>
+      <!-- PARALLAX BACKGROUND IMAGE -->
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <h3>Welcome {{candidate.name | titlecase}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="block remove-top">
+      <div class="container">
+        <div class="row no-gape">
+          <aside class="col-lg-3 column border-right">
+            <div class="widget">
+              <div class="tree_widget-sec">
+                <ul>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-file-text"></i>Company Profile</a>
+                    <ul>
+                      <ol><a href="#" title="">My Profile</a></ol>
+                      <ol><a href="#" title="">Social Network</a></ol>
+                      <ol><a href="#" title="">Contact Information</a></ol>
+                    </ul>
+
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-briefcase"></i>Manage Jobs</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-money"></i>Transactions</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-paper-plane"></i>Resumes</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-user"></i>Packages</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-file-text"></i>Post a New Job</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-flash"></i>Job Alerts</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li class="inner-child">
+                    <a href="#" title=""><i class="la la-lock"></i>Change Password</a>
+                    <ul>
+                      <li><a href="#" title="">My Profile</a></li>
+                      <li><a href="#" title="">Social Network</a></li>
+                      <li><a href="#" title="">Contact Information</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="skill-perc">
+                <h3>Skills Percentage </h3>
+                <p>Put value for "Cover Image" field to increase your skill up to "15%"</p>
+                <div class="skills-bar">
+                  <span>85%</span>
+                  <div
+                    class="second circle"
+                    data-size="155"
+                    data-thickness="60">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="col-lg-9 column">
+            <div class="padding-left">
+              <div class="manage-jobs-sec">
+                <div class="border-title"><h3>Education</h3>
+                  <!--<a class="cancel" title=""><i-->
+                  <!--class="la la-close"></i> Cancel</a>-->
+                </div>
+                <div class="resumeadd-form">
+
+                  <form [formGroup]="educationForm">
+                    <div *ngFor="let education of educationList;">
+                      <div *ngIf="!education.deleted">
+                        <div class="customCancelAdd">
+                          <a (click)="removeEducation(education)" class="cancel" title=""><i
+                            class="la la-close"></i> Remove this education</a>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                        <span [ngClass]="{'invalid-label':isFieldValid('title',educationForm)}"
+                              class="pf-title">Title</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="education.title" class="form-control"
+                                     formControlName="title-{{education.uuId}}"
+                                     placeholder="title"
+                                     type="text"/>
+                            </div>
+
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">Degree Level</span>
+                            <div class="pf-field">
+                              <angular2-multiselect
+                                [data]="educationLevelsList"
+                                [settings]="dropDownSettings"
+                                formControlName="educationLevel-{{education.uuId}}" required>
+                              </angular2-multiselect>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">From Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="education.startDate" [owlDateTimeTrigger]="dt1"
+                                     [owlDateTime]="dt1"
+                                     class="form-control"
+                                     formControlName="startDate-{{education.uuId}}"
+                                     placeholder="">
+                              <owl-date-time #dt1 pickerType="calendar"></owl-date-time>
+
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">To Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="education.endDate" [owlDateTimeTrigger]="dt2"
+                                     [owlDateTime]="dt2"
+                                     class="form-control"
+                                     formControlName="endDate-{{education.uuId}}"
+                                     placeholder="">
+                              <owl-date-time #dt2 pickerType="calendar"></owl-date-time>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <span class="pf-title">Institute</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="education.institute"
+                                     class="form-control"
+                                     formControlName="institute-{{education.uuId}}"
+                                     type="text"/>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <span class="pf-title">Description</span>
+                            <div class="pf-field">
+                        <textarea [(ngModel)]="education.description"
+                                  class="form-control"
+                                  formControlName="description-{{education.uuId}}"
+                                  type="text"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--<ul>-->
+                      <!--<li class="signup-popup">-->
+                      <a (click)="openFormModal(education,content)" title="">
+                        <i
+                          class="la la-edit"></i> Edit</a>
+                      <!--</li>-->
+                      <!--</ul>-->
+                    </div>
+                  </form>
+                  <a (click)="addEducation()" class="add" setposition="right" title=""><i
+                    class="la la-plus-circle"></i> Add new</a>
+                </div>
+
+                <!--Work Experience-->
+                <div class="border-title"><h3>Work Experience</h3></div>
+                <div class="resumeadd-form">
+                  <form [formGroup]="workExperienceForm">
+                    <div *ngFor="let workExp of workExperienceList">
+                      <div *ngIf="!workExp.deleted">
+                        <div class="customCancelAdd">
+                          <a (click)="removeWorkExperience(workExp)" class="cancel" title=""><i
+                            class="la la-close"></i> Remove this work</a>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <span class="pf-title">Title</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="workExp.title" class="form-control"
+                                     formControlName="title-{{workExp.uuId}}"
+                                     placeholder="title"
+                                     type="text"/>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">From Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="workExp.startDate" [owlDateTimeTrigger]="dt3"
+                                     [owlDateTime]="dt3"
+                                     class="form-control"
+                                     formControlName="startDate-{{workExp.uuId}}"
+                                     placeholder="">
+                              <owl-date-time #dt3 pickerType="calendar"></owl-date-time>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">To Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="workExp.endDate" [owlDateTimeTrigger]="dt4"
+                                     [owlDateTime]="dt4"
+                                     class="form-control"
+                                     formControlName="endDate-{{workExp.uuId}}"
+                                     placeholder="">
+                              <owl-date-time #dt4 pickerType="calendar"></owl-date-time>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                          </div>
+                          <div class="col-lg-12">
+                            <span class="pf-title">Company</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="workExp.company"
+                                     class="form-control"
+                                     formControlName="company-{{workExp.uuId}}"
+                                     type="text"/>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <span class="pf-title">Description</span>
+                            <div class="pf-field">
+                              <textarea [(ngModel)]="workExp.description" class="form-control"
+                                        formControlName="description-{{workExp.uuId}}" type="text"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <a (click)="addWorkExperiences()" class="add" setposition="right" title=""><i
+                    class="la la-plus-circle"></i> Add new</a>
+                </div>
+                <div class="border-title"><h3>Portfolio</h3><a class="cancel" href="#" title=""><i
+                  class="la la-close"></i> Cancel</a></div>
+                <div class="resumeadd-form">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</p>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="upload-portfolio">
+                        <div class="uploadbox">
+                          <label for="file-upload" class="custom-file-upload">
+                            <i class="la la-cloud-upload"></i> <span>Upload Image</span>
+                          </label>
+                          <input id="file-upload" style="display: none;" type="file"/>
+                        </div>
+                        <div class="uploadfield">
+                          <span class="pf-title">Title</span>
+                          <div class="pf-field">
+                            <input placeholder="Tooms.." type="text">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-title"><h3>Professional Skills</h3></div>
+                <div class="resumeadd-form">
+                  <form [formGroup]="candidateProfessionalSkillsForm">
+                    <div *ngFor="let skill of professionalSkillsList; let l=index; " [attr.data-index]="l"
+                         id="skill-{{l}}">
+                      <div *ngIf="!skill.deleted">
+                        <div class="customCancelAdd">
+                          <a (click)="removeProfessionalSkills(skill)" class="cancel" title=""><i
+                            class="la la-close"></i> Remove this skill</a>
+                        </div>
+                        <div class="row align-items-end">
+                          <div class="col-lg-7">
+                            <span class="pf-title">Skill Heading</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="skill.skillHeading"
+                                     class="form-control"
+                                     formControlName="skillHeading-{{l}}"
+                                     type="text"/>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <span class="pf-title">Percentage</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="skill.percentage"
+                                     class="form-control"
+                                     formControlName="percentage-{{l}}"
+                                     type="text"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <a (click)="addProfessionalSkills()" class="add" setposition="right" title=""><i
+                    class="la la-plus-circle"></i> Add new skill</a>
+                </div>
+                <div class="border-title"><h3>Awards</h3></div>
+                <div class="resumeadd-form">
+                  <form [formGroup]="candidateAwardsForm">
+                    <div *ngFor="let award of awardsList; let k=index; " [attr.data-index]="k"
+                         id="workExp-{{k}}">
+                      <div *ngIf="!award.deleted">
+                        <div class="customCancelAdd">
+                          <a (click)="removeAward(award)" class="cancel" title=""><i
+                            class="la la-close"></i> Remove this award</a>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <span class="pf-title">Title</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="award.title" class="form-control"
+                                     formControlName="title-{{k}}"
+                                     type="text">
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">Start Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="award.startDate" [owlDateTimeTrigger]="dt5"
+                                     [owlDateTime]="dt5"
+                                     class="form-control"
+                                     formControlName="startDate-{{k}}"
+                                     type="text"/>
+                              <owl-date-time #dt5 pickerType="calendar"></owl-date-time>
+
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <span class="pf-title">End Date</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="award.endDate" [owlDateTimeTrigger]="dt6"
+                                     [owlDateTime]="dt6"
+                                     class="form-control" formControlName="endDate-{{k}}"
+                                     type="text"/>
+                              <owl-date-time #dt6 pickerType="calendar"></owl-date-time>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <span class="pf-title">Description</span>
+                            <div class="pf-field">
+                           <textarea [(ngModel)]="award.description"
+                                     class="form-control"
+                                     formControlName="description-{{k}}" type="text"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <a (click)="addAwards()" class="add" setposition="right" title=""><i
+                    class="la la-plus-circle"></i> Add new award</a>
+                  <div class="col-lg-12">
+                    <button (click)="submit($event)" type="button">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="profile-sidebar">
+  <span class="close-profile"><i class="la la-close"></i></span>
+  <div class="can-detail-s">
+    <div class="cst"><img src="http://placehold.it/145x145" alt=""/></div>
+    <h3>David CARLOS</h3>
+    <span><i>UX / UI Designer</i> at Atract Solutions</span>
+    <p>creativelayers088@gmail.com</p>
+    <p>Member Since, 2017</p>
+    <p><i class="la la-map-marker"></i>Istanbul / Turkey</p>
+  </div>
+  <div class="tree_widget-sec">
+    <ul>
+      <li class="inner-child active">
+        <a href="#" title=""><i class="la la-file-text"></i>My Profile</a>
+        <ul style="display: block;">
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-briefcase"></i>My Resume</a>
+        <ul>
+          <li><a href="#" title="">Education</a></li>
+          <li><a href="#" title="">Work Experience</a></li>
+          <li><a href="#" title="">Portfolio</a></li>
+          <li><a href="#" title="">Professional Skills</a></li>
+          <li><a href="#" title="">Awards</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-money"></i>Shorlisted Job</a>
+        <ul>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-paper-plane"></i>Applied Job</a>
+        <ul>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-user"></i>Job Alerts</a>
+        <ul>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a>
+        <ul>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li class="inner-child">
+        <a href="#" title=""><i class="la la-flash"></i>Change Password</a>
+        <ul>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="#" title="">Social Network</a></li>
+          <li><a href="#" title="">Contact Information</a></li>
+        </ul>
+      </li>
+      <li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+    </ul>
+  </div>
+</div><!-- Profile Sidebar -->
+
+<div class="view-resumesec">
+  <div class="view-resumes">
+    <span class="close-resume-popup"><i class="la la-close"></i></span>
+    <h3>13 Times Viewed By 8 Companies.</h3>
+    <div class="job-listing wtabs">
+      <div class="job-title-sec">
+        <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+        <span>Massimo Artemisis</span>
+        <div class="job-lctn">Sacramento, California</div>
+      </div>
+      <span class="date-resume">11.02.2017</span>
+    </div><!-- Job -->
+    <div class="job-listing wtabs">
+      <div class="job-title-sec">
+        <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+        <h3><a href="#" title="">C Developer (Senior) C .Net</a></h3>
+        <span>Massimo Artemisis</span>
+        <div class="job-lctn"><i class="la la-map-marker"></i>Sacramento, California</div>
+      </div>
+      <span class="date-resume">11.02.2017</span>
+    </div><!-- Job -->
+    <div class="job-listing wtabs">
+      <div class="job-title-sec">
+        <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+        <span>Massimo Artemisis</span>
+        <div class="job-lctn">Sacramento, California</div>
+      </div>
+      <span class="date-resume">11.02.2017</span>
+    </div><!-- Job -->
+    <div class="job-listing wtabs">
+      <div class="job-title-sec">
+        <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+        <span>Massimo Artemisis</span>
+        <div class="job-lctn">Sacramento, California</div>
+      </div>
+      <span class="date-resume">11.02.2017</span>
+    </div><!-- Job -->
+  </div>
+</div>
+
+<div class="follow-companiesec">
+  <div class="follow-companies">
+    <span class="close-follow-company"><i class="la la-close"></i></span>
+    <h3>Follow Companies.</h3>
+    <ul id="scrollbar">
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">Web Designer / Developer</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">Tix Dog</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">StarHealth</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">Altes Bank</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">StarHealth</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+      <li>
+        <div class="job-listing wtabs">
+          <div class="job-title-sec">
+            <div class="c-logo"><img src="http://placehold.it/98x51" alt=""/></div>
+            <h3><a href="#" title="">Altes Bank</a></h3>
+            <div class="job-lctn">Sacramento, California</div>
+          </div>
+          <a href="#" title="" class="go-unfollow">Unfollow</a>
+        </div><!-- Job -->
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #content>
+  <div class="theme-layout">
+    <section>
+      <div class="block remove-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="account-popup-area signup-popup-box static">
+                <div class="account-popup">
+                  <h3>Education</h3>
+                  <div class="select-user">
+                    <!--<span (click)="setUserType(candidate)"> Candidate</span>-->
+                    <!--<span (click)="setUserType(employer)"> Employer</span>-->
+                  </div>
+                  <!--<div *ngIf="errorMessage" class="error-msgFullname">-->
+                  <!--<p>-->
+                  <!--*Please select your user type.</p>-->
+                  <!--</div>-->
+                  <form lass="login-form" [formGroup]="educationForm">
+
+                    <div *ngFor="let education of educationList;">
+                      <div *ngIf="!education.deleted">
+                        <div class="customCancelAdd">
+                          <a (click)="removeEducation(education)" class="cancel" title=""><i
+                            class="la la-close"></i> Remove this education</a>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+
+                            <span [ngClass]="{'invalid-label':isFieldValid('title',educationForm)}"
+                                  class="pf-title">Title</span>
+                            <div class="pf-field">
+                              <input [(ngModel)]="education.title" class="form-control"
+                                     formControlName="title-{{education.uuId}}"
+                                     placeholder="title"
+                                     type="text"/>
+                            </div>
+
+                          </div>
+                          <!--<div class="col-lg-6">-->
+                          <!--<span class="pf-title">Degree Level</span>-->
+                          <!--<div class="pf-field">-->
+                          <!--<angular2-multiselect-->
+                          <!--[data]="educationLevelsList"-->
+                          <!--[settings]="dropDownSettings"-->
+                          <!--formControlName="educationLevel-{{education.uuId}}" required>-->
+                          <!--</angular2-multiselect>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="col-lg-6">-->
+                          <!--<span class="pf-title">From Date</span>-->
+                          <!--<div class="pf-field">-->
+                          <!--<input [(ngModel)]="education.startDate" [owlDateTimeTrigger]="dt1"-->
+                          <!--[owlDateTime]="dt1"-->
+                          <!--class="form-control"-->
+                          <!--formControlName="startDate-{{education.uuId}}"-->
+                          <!--placeholder="">-->
+                          <!--<owl-date-time #dt1 pickerType="calendar"></owl-date-time>-->
+
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="col-lg-6">-->
+                          <!--<span class="pf-title">To Date</span>-->
+                          <!--<div class="pf-field">-->
+                          <!--<input [(ngModel)]="education.endDate" [owlDateTimeTrigger]="dt2"-->
+                          <!--[owlDateTime]="dt2"-->
+                          <!--class="form-control"-->
+                          <!--formControlName="endDate-{{education.uuId}}"-->
+                          <!--placeholder="">-->
+                          <!--<owl-date-time #dt2 pickerType="calendar"></owl-date-time>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="col-lg-12">-->
+                          <!--<span class="pf-title">Institute</span>-->
+                          <!--<div class="pf-field">-->
+                          <!--<input [(ngModel)]="education.institute"-->
+                          <!--class="form-control"-->
+                          <!--formControlName="institute-{{education.uuId}}"-->
+                          <!--type="text"/>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="col-lg-12">-->
+                          <!--<span class="pf-title">Description</span>-->
+                          <!--<div class="pf-field">-->
+                          <!--<textarea [(ngModel)]="education.description"-->
+                          <!--class="form-control"-->
+                          <!--formControlName="description-{{education.uuId}}"-->
+                          <!--type="text"></textarea>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button class="btn btn-success"
+                              [disabled]="!educationForm.valid">
+                        Submit Form
+                      </button>
+                    </div>
+                  </form>
+                  <div class="extra-login">
+                    <span>Or</span>
+                    <div class="login-social">
+                      <a class="fb-login" href="#" title=""><i class="la la-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- SIGNUP POPUP -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-template>

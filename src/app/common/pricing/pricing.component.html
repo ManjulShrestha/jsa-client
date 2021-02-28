@@ -1,0 +1,173 @@
+<div *ngIf="this.showLoader == true" class="page-loading">
+  <img alt="" src="../assets/images/loader.gif"/>
+</div>
+<div class="theme-layout webView" id="scrollup">
+  <!-- <section>
+    <div class="block no-padding  gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner2">
+              <div class="inner-title2">
+                <h3>Pricing Plans</h3>
+              </div>
+              <div class="page-breacrumbs">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h2>Buy Our Plans And Packages</h2>
+              <span>One of our jobs has some kind of flexibility option - such as telecommuting, a part-time schedule or
+                a flexible or flextime schedule.</span>
+            </div><!-- Heading -->
+            <div class="plans-sec">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="pricetable">
+                    <div class="pricetable-head">
+                      <h3>Free Jobs</h3>
+                      <h2>Free</h2>
+                      <span>Unlimited</span>
+                    </div><!-- Price Table -->
+                    <ul>
+                      <li>No job posting</li>
+                      <li>Company Profile</li>
+                      <li>Allow Unsolicited Submissions (student can contact employer and send their resume)</li>
+                      <li>Browse redacted resume books - No contact information shown</li>
+                    </ul>
+                    <a
+                      *ngIf="companyExist"
+                      title="">FREE
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="pricetable active">
+                    <div class="pricetable-head">
+                      <h3>Basic Jobs</h3>
+                      <h2><i>$</i>99</h2>
+                      <span>1 month</span>
+                    </div><!-- Price Table -->
+                    <ul>
+                      <li>2 job posting</li>
+                      <li>Company Profile</li>
+                      <li>Allow Unsolicited Submissions (student can contact employer and send their resume)</li>
+                      <li>Browse redacted resume books - No contact information shown</li>
+                    </ul>
+                    <a *ngIf="companyExist"
+                      (click)="openPopup(paymentModal,99)"
+                      title="">BUY NOW</a>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="pricetable">
+                    <div class="pricetable-head">
+                      <h3>Standard Jobs</h3>
+                      <h2><i>$</i>250</h2>
+                      <span>1 month</span>
+                    </div><!-- Price Table -->
+                    <ul>
+                      <li>10 job posting</li>
+                      <li>Company Profile</li>
+                      <li>Browse Resume Book with contact information- Show student’s contact information</li>
+                      <li>Enhanced on-site marketing with blogs, posts, etc. (hold-off for now like google search
+                        ranking)
+                      </li>
+                    </ul>
+                    <a *ngIf="companyExist"
+                      (click)="openPopup(paymentModal,250)"
+                      title="">BUY NOW</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="pricetable">
+                    <div class="pricetable-head">
+                      <h3>Premium Jobs</h3>
+                      <h2><i>$</i>500</h2>
+                      <span>1 month</span>
+                    </div><!-- Price Table -->
+                    <ul>
+                      <li>Unlimited job posting</li>
+                      <li>2 Featured Job Listings per month</li>
+                      <li>Featured Company Profile with Professional Photographer (Office, Jobsite, etc.)</li>
+                      <li>Browse Resume Books with contact information</li>
+                      <li>Enhanced On-site marketing (Professional)
+                        Jobs
+                        News
+                        Project Updates
+                      </li>
+                      <li>Discounted Background checks</li>
+                    </ul>
+                    <a *ngIf="companyExist"
+                      (click)="openPopup(paymentModal,500)"
+                      title="">BUY NOW</a>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="pricetable active">
+                    <div class="pricetable-head">
+                      <h3>Golden Jobs</h3>
+                      <h2><i>$</i>1000</h2>
+                      <span>1 month</span>
+                    </div><!-- Price Table -->
+                    <ul>
+                      <li>Unlimited job posting</li>
+                      <li>2 featured job</li>
+                      <li>Featured Company Profile with Professional Photographer</li>
+                      <li>Browse Resume Books with contact information</li>
+                      <li>Enhanced on site marketing
+                        Blogs
+                        News
+                        Project Updates
+                        School-wide email blasts
+                      </li>
+                      <li>Free Background Checks</li>
+                      <li> Free Booth at yearly career fair</li>
+                      <li> Free Targeted monthly Facebook Ads to Students</li>
+                    </ul>
+                    <a *ngIf="companyExist"
+                      (click)="openPopup(paymentModal,1000)"
+                      title="">BUY NOW</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <modal #paymentModal>
+    <modal-header>
+      <h3>Payment</h3>
+    </modal-header>
+
+    <modal-content>
+      <!--<form (ngSubmit)="buy(paymentForm.value)" [formGroup]="paymentForm" class="paymentForm">-->
+      <form [formGroup]="paymentForm" class="paymentForm">
+        <div class="field" id="card-element">
+        <ngx-stripe-card [elementsOptions]="elementsOptions" [options]="cardOptions"></ngx-stripe-card>
+        </div>
+        <div class="division17button">
+          <button (click)="buy(paymentForm.value)" type="submit">
+            PAY NOW
+          </button>
+        </div>
+      </form>
+    </modal-content>
+  </modal>
+</div>

@@ -1,0 +1,160 @@
+<div class="theme-layout webView" id="scrollup">
+  <!-- <section class="overlape">
+    <div class="block no-padding">
+      <div class="parallax scrolly-invisible no-parallax" data-velocity="-.1"
+        style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 422.28px transparent;"></div>
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <h3>Jobs List</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="block no-padding">
+      <div class="container">
+        <div class="row no-gape">
+          <aside class="col-lg-4 column border-right">
+            <!--<div class="widget">
+              <div class="search_widget_job">
+                <div class="field_w_search">
+                  <input placeholder="Search Keywords" type="text"/>
+                  <i class="la la-search"></i>
+                </div>&lt;!&ndash; Search Widget &ndash;&gt;
+                <div class="field_w_search">
+                  <input placeholder="All Locations" type="text"/>
+                  <i class="la la-map-marker"></i>
+                </div>&lt;!&ndash; Search Widget &ndash;&gt;
+              </div>
+            </div>-->
+            <!--  <div class="widget">
+              <h3 class="sb-title open">Date Posted</h3>
+              <div class="posted_widget">
+                <input id="232" name="choose" type="radio"><label for="232">Last Hour</label><br/>
+                <input id="wwqe" name="choose" type="radio"><label for="wwqe">Last 24 hours</label><br/>
+                <input id="erewr" name="choose" type="radio"><label for="erewr">Last 7 days</label><br/>
+                <input id="qwe" name="choose" type="radio"><label for="qwe">Last 14 days</label><br/>
+                <input id="wqe" name="choose" type="radio"><label for="wqe">Last 30 days</label><br/>
+                <input id="qweqw" name="choose" type="radio"><label class="nm" for="qweqw">All</label><br/>
+              </div>
+            </div>-->
+            <div class="widget" style="cursor: pointer;">
+              <h3 (click)="allData()">All</h3>
+            </div>
+            <div class="widget">
+              <h3 class="sb-title closed">Job Type</h3>
+              <div class="type_widget">
+                <p *ngFor="let jobTy of jobType" class="flchek "><input id="{{jobTy.nameEnglish}}"
+                    name="{{jobTy.nameEnglish}}" type="checkbox" (change)="selectJobType($event,jobTy)"><label
+                    for="{{jobTy.nameEnglish}}">{{jobTy.nameEnglish}}</label></p>
+              </div>
+            </div>
+            <!--<div class="widget">
+              <h3 class="sb-title open">Specialism</h3>
+              <div class="type_widget">
+                <p *ngFor="let cat of category" class="flchek"><input id="{{cat.nameEnglish}}" name="{{cat.nameEnglish}}"
+                                                                      type="checkbox"><label
+                  for="{{cat.nameEnglish}}">{{cat.nameEnglish}}</label></p>
+              </div>
+            </div>-->
+
+            <div class="widget">
+              <h3 class="sb-title closed">Offered Salary</h3>
+              <div class="type_widget">
+                <p *ngFor="let range of offererdSalary" class="flchek"><input id="{{range.nameEnglish}}"
+                    name="{{range.nameEnglish}}" (change)="selectSalary($event,range)" type="checkbox"><label
+                    for="{{range.nameEnglish}}">{{range.nameEnglish}}</label></p>
+              </div>
+            </div>
+
+            <div class="widget">
+              <h3 class="sb-title closed">Career Level</h3>
+              <div class="type_widget">
+                <p *ngFor="let level of careerLevel"><input id="{{level.nameEnglish}}" name="{{level.nameEnglish}}"
+                    (change)="selectCareerLevel($event,level)" type="checkbox"><label
+                    for="{{level.nameEnglish}}">{{level.nameEnglish}}</label></p>
+              </div>
+            </div>
+
+            <div class="widget">
+              <h3 class="sb-title closed">Experience</h3>
+              <div class="type_widget">
+                <p *ngFor="let exp of experience"><input id="{{exp.nameEnglish}}" name="{{exp.nameEnglish}}"
+                    (change)="selectExperience($event,exp)" type="checkbox"><label
+                    for="{{exp.nameEnglish}}">{{exp.nameEnglish}}</label></p>
+
+              </div>
+
+            </div>
+            <!-- <div class="widget">
+              <h3 class="sb-title closed">Industry</h3>
+              <div class="type_widget">
+                <p *ngFor="let ind of industry"><input id="{{ind.nameEnglish}}" name="{{ind.nameEnglish}}"
+                                                       type="checkbox"><label
+                  for="{{ind.nameEnglish}}">{{ind.nameEnglish}}</label></p>
+              </div>
+            </div>
+
+            <div class="widget">
+              <h3 class="sb-title closed">Qualification</h3>
+              <div class="type_widget">
+                <p *ngFor="let qual of qualification"><input id="{{qual.nameEnglish}}" name="{{qual.nameEnglish}}"
+                                                             type="checkbox"><label
+                  for="{{qual.nameEnglish}}">{{qual.nameEnglish}}</label></p>
+              </div>
+            </div>-->
+
+            <div class="widget">
+              <div class="subscribe_widget">
+                <h3>Still Need Help ?</h3>
+                <p>Let us now about your issue and a Professional will reach you out.</p>
+                <form>
+                  <input placeholder="Enter Valid Email Address" type="text">
+                  <button type="submit"><i class="la la-paper-plane" style="color:#fff"></i></button>
+                </form>
+              </div>
+            </div>
+          </aside>
+          <div class="col-lg-8 column">
+            <div class="modrn-joblist">
+
+              <div class="filterbar">
+                <h5>{{totalJob}} Jobs & Vacancies</h5>
+              </div>
+            </div><!-- MOdern Job LIst -->
+
+
+            <div class="job-list-modern">
+              <div *ngFor="let job of filteredJobs" class="job-listings-sec">
+                <!--<div [routerLink]="['/job/view/'+job.id]"  class="job-listing wtabs" >-->
+                <div class="job-listing wtabs">
+                  <div class="job-title-sec">
+                    <!--<div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>-->
+                    <h3><a [routerLink]="['/job/view/'+job.id]" title="">{{job.jobTitle.nameEnglish}}</a></h3>
+                    <span>{{job.mapDetail}}</span>
+                    <div class="job-lctn"><i class="la la-map-marker"></i>{{job.completeAddress}}</div>
+                  </div>
+                  <div class="job-style-bx">
+                    <span class="job-is ft">{{job.jobType.nameEnglish}}</span>
+                    <span *ngIf="job.candidateApplied" class="job-applied">Applied</span>
+                    <a (click)="removeFromFavorite(job)" *ngIf="job.favorite" class="active"><span
+                        class="fav-job active"><i class="la la-heart-o"></i></span></a>
+                    <a (click)="addToFavorite(job)" *ngIf="!job.favorite"><span class="fav-job"><i
+                          class="la la-heart-o"></i></span></a>
+                    <i>Posted On : {{job.addedDate  | date:'MMM dd, yyyy'}}</i>
+                  </div>
+                </div>
+              </div>
+              <div (click)="populateJob()" class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

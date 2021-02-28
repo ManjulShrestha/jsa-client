@@ -1,0 +1,94 @@
+<ng-container *access="{condition:['candidate_dashboard'],requiredAll:true,redirect:true}">
+  <div class="theme-layout webView" id="scrollup">
+
+
+    <!-- <section class="overlape">
+      <div class="block no-padding">
+        <div class="parallax scrolly-invisible no-parallax" data-velocity="-.1"
+          style="background: url('../assets/images/bg2.jpg') repeat scroll 50% 422.28px transparent;"></div>
+        <div class="container fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="inner-header">
+                <h3>Welcome {{candidate.name | titlecase}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section>
+      <div class="block no-padding">
+        <div class="container">
+          <div class="row no-gape">
+            <aside class="col-lg-3 column border-right">
+              <app-sidebar-candidate></app-sidebar-candidate>
+            </aside>
+            <div class="col-lg-9 column">
+              <div class="padding-left">
+                <div class="manage-jobs-sec">
+                  <h3>Candidates Dashboard</h3>
+                  <div class="cat-sec">
+                    <div class="row no-gape">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category">
+                          <a [routerLink]="['../../candidate/profile']">
+                            <i class="la la-file"></i>
+                            <span>My Profile</span>
+                            <p>View Profile</p>
+                          </a>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category view-resume-list">
+                          <a [routerLink]="['../../candidate/edit-profile']" title="">
+                            <i class="la la-edit"></i>
+                            <span>Edit Profile </span>
+                            <p>Edit Profile</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category view-resume-list">
+                          <a (click)="getFileFromService(this.candidate.candidateResume.pdfPath, 'pdf')" title="">
+                            <i class="la la-eye"></i>
+                            <span>View Resume</span>
+                            <p>Resume</p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cat-sec">
+                    <div class="row no-gape">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category follow-companies-popup">
+                          <a [routerLink]="['/company/list/']" title="">
+                            <i class="la la-user"></i>
+                            <span>Follow Companies</span>
+                            <p>{{followedCompanyCount}} Companies followed</p>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="p-category">
+                          <a [routerLink]="['/job/list/0']" title="">
+                            <i class="la la-briefcase"></i>
+                            <span>Jobs</span>
+                            <p>{{appliedJobCount}} Jobs Applied</p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-container>
