@@ -108,11 +108,10 @@ export class LoginRegisterComponent implements OnInit {
       res.userType ? this.userTypeid = <number>res.userType.id : null;
 
       if (res.id) {
-        this.storageService.storeCurrentUser(res);
-        this.storageService.setCurrentUserToken(res.token);
         this.loginService.getUserRoles(res.id).then((response) => {
+          this.storageService.storeCurrentUser(res);
+          this.storageService.setCurrentUserToken(res.token);
           this.storageService.storeCurrentUserRoles(response);
-
           if (this.userTypeid === ConstantMetaData.CANDIDATE) {
             if (!res.firstTimeLogin) {
               this.candidateService.getCandidateByUser(res.id).then((responseCandidate) => {

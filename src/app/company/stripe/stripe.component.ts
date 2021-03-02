@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ElementOptions, Elements, ElementsOptions, StripeService, StripeCardComponent} from 'ngx-stripe';
+import { StripeService, StripeCardComponent} from 'ngx-stripe';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ModalManager} from 'ngb-modal';
 import {PopupService} from '../../services/popup.service';
@@ -11,28 +11,28 @@ import {PopupService} from '../../services/popup.service';
 })
 export class StripeComponent implements OnInit {
 
-  elements: Elements;
+  //elements: Elements;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
   @ViewChild('paymentModal') paymentModal;
   // optional parameters
-  elementsOptions: ElementsOptions = {
-    locale: 'en'
-  };
-  cardOptions: ElementOptions = {
-    style: {
-      base: {
-        iconColor: '#666EE8',
-        color: '#31325F',
-        lineHeight: '40px',
-        fontWeight: 300,
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '18px',
-        '::placeholder': {
-          color: '#CFD7E0'
-        }
-      }
-    }
-  };
+  // elementsOptions: ElementsOptions = {
+  //   locale: 'en'
+  // };
+  // cardOptions: ElementOptions = {
+  //   style: {
+  //     base: {
+  //       iconColor: '#666EE8',
+  //       color: '#31325F',
+  //       lineHeight: '40px',
+  //       fontWeight: 300,
+  //       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+  //       fontSize: '18px',
+  //       '::placeholder': {
+  //         color: '#CFD7E0'
+  //       }
+  //     }
+  //   }
+  // };
   paymentForm: FormGroup;
   private modalRef;
 

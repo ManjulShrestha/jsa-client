@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ModalManager} from 'ngb-modal';
 import {PopupService} from '../../services/popup.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ElementOptions, ElementsOptions, StripeCardComponent, StripeService} from 'ngx-stripe';
+import {StripeCardComponent, StripeService} from 'ngx-stripe';
 import {StorageService} from '../storage/storage.service';
 import {Company} from '../../models/company/company';
 import {CompanyService} from '../../services/company.service';
@@ -25,24 +25,24 @@ export class PricingComponent implements OnInit {
   companyExist:boolean=false;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
   @ViewChild('paymentModal') paymentModal;
-  elementsOptions: ElementsOptions = {
-    locale: 'en'
-  };
-  cardOptions: ElementOptions = {
-    style: {
-      base: {
-        iconColor: '#666EE8',
-        color: '#31325F',
-        lineHeight: '40px',
-        fontWeight: 300,
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '18px',
-        '::placeholder': {
-          color: '#CFD7E0'
-        }
-      }
-    }
-  };
+  // elementsOptions: ElementsOptions = {
+  //   locale: 'en'
+  // };
+  // cardOptions: ElementOptions = {
+  //   style: {
+  //     base: {
+  //       iconColor: '#666EE8',
+  //       color: '#31325F',
+  //       lineHeight: '40px',
+  //       fontWeight: 300,
+  //       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+  //       fontSize: '18px',
+  //       '::placeholder': {
+  //         color: '#CFD7E0'
+  //       }
+  //     }
+  //   }
+  // };
   company: Company;
   private modalRef;
 
