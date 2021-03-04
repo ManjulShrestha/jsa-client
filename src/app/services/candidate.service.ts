@@ -15,11 +15,11 @@ export class CandidateService {
   }
 
   addCandidate(candidate: Candidate) {
-    return this.http.post('candidate', candidate);
+    return this.http.post('candidate/', candidate);
   }
 
   updateCandidate(candidate: Candidate) {
-    return this.http.put('candidate', candidate);
+    return this.http.put('candidate/', candidate);
   }
 
   getCandidateByUser(userId: number) {
@@ -27,7 +27,7 @@ export class CandidateService {
   }
 
   getCandidateList(page: number, size: number) {
-    return this.http.get('candidate?page=' + page + '&size=' + size);
+    return this.http.get('candidate/?page=' + page + '&size=' + size);
   }
 
   getCandidatesCount() {

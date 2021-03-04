@@ -16,11 +16,11 @@ export class CompanyService {
   }
 
   addCompany(company: Company) {
-    return this.http.post('company', company);
+    return this.http.post('company/', company);
   }
 
   updateCompany(company: Company){
-    return this.http.put('company', company);
+    return this.http.put('company/', company);
   }
 
   getCompanyByUser(userId: number){
@@ -36,7 +36,7 @@ export class CompanyService {
   }
 
   getCompanies(page:number, size:number){
-    return this.http.get('company?page='+page+'&size='+size);
+    return this.http.get('company/?page='+page+'&size='+size);
   }
 
   getCompanyCount(){
