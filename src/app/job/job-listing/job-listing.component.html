@@ -146,7 +146,7 @@
                         class="fav-job active"><i class="la la-heart-o"></i></span></a>
                     <a (click)="addToFavorite(job)" *ngIf="!job.favorite"><span class="fav-job"><i
                           class="la la-heart-o"></i></span></a>
-                    <i>Posted On : {{job.addedDate  | date:'MMM dd, yyyy'}}</i>
+                    <i>Posted On : {{job.createdAt  | date:'MMM dd, yyyy'}}</i>
                   </div>
                 </div>
               </div>

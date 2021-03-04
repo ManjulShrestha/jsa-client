@@ -23,7 +23,7 @@ export class CandidatesComponent implements OnInit {
   showString: string;
   @ViewChild('candidateModal') candidateModal;
   size = 10;
-  page = 1;
+  page = 0;
   candidates: Candidate[] = [];
   totalCandidate: number;
   private modalRef;

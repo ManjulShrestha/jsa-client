@@ -55,7 +55,7 @@
                       <span class="applied-field">3+ Applied</span>
                     </td>-->
                       <td *ngIf="!job.deleted">
-                        <span>{{job.addedDate | date:'MMM dd, yyyy'}} -- </span>
+                        <span>{{job.createdAt | date:'MMM dd, yyyy'}} -- </span>
                         <span>{{job.applicationDeadline | date:'MMM dd, yyyy'}}</span><br />
                       </td>
                       <td *ngIf="!job.deleted">

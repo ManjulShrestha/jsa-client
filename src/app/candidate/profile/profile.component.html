@@ -83,7 +83,7 @@
                     </div>
                   </div>
                   <p>{{candidate.candidateContactInfo.email}}</p>
-                  <p>Member Since, {{candidate.addedDate | date:'MMM dd, yyyy'}}</p>
+                  <p>Member Since, {{candidate.createdAt | date:'MMM dd, yyyy'}}</p>
                   <p><i class="la la-map-marker"></i>{{candidate.candidateContactInfo.mapDetail}}
                     /{{candidate.candidateContactInfo.country ? candidate.candidateContactInfo.country.nameEnglish : ''}}
                   </p>

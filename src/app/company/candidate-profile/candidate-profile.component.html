@@ -67,7 +67,7 @@
                       <span><i>{{workExp.title}}</i> at {{workExp.company}}</span>
                     </div>
                   </div>
-                  <p>Member Since, {{candidate.addedDate | date:'MMM dd, yyyy'}}</p>
+                  <p>Member Since, {{candidate.createdAt | date:'MMM dd, yyyy'}}</p>
                   <p
                     *access="{condition:['candidate_contact_info'],requiredAll:true,redirect:false}">{{candidate.candidateContactInfo.email}}</p>
                   <p *access="{condition:['candidate_contact_info'],requiredAll:true,redirect:false}"><i

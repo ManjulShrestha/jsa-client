@@ -20,7 +20,7 @@ export class CandidateListComponent implements OnInit {
   candidateList: Candidate[] = [];
   totalCandidate: number;
   size = 5;
-  page = 1;
+  page = 0;
   candidateResume: CandidateResume;
   isImageLoading: boolean = true;
   candidateProfilePic: any;

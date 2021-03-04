@@ -95,7 +95,7 @@
                                 <span [routerLink]="['/job/view/'+job.id]"
                                       class="job-is ft">{{job.jobType.nameEnglish}}</span>
                                 <span class="fav-job"><i class="la la-heart-o"></i></span>
-                                <i>Post Date: {{job.addedDate  | date:'MMM dd, yyyy'}}</i>
+                                <i>Post Date: {{job.createdAt  | date:'MMM dd, yyyy'}}</i>
                               </div>
                             </div>
                           </div>

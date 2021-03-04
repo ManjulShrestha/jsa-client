@@ -30,7 +30,7 @@ export class IndexComponent implements OnInit {
   }
 
   populateJob() {
-    this.jobService.getActiveJobs(1, 5).then(
+    this.jobService.getActiveJobs(0, 5).then(
       (response) => {
         console.log(response);
         this.jobs = response;

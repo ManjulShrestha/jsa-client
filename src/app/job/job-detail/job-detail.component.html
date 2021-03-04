@@ -41,7 +41,7 @@
                         <span><i class="la la-map-marker"></i>{{job.completeAddress}}</span><span class="job-is ft">{{job.jobType.nameEnglish}}</span>
                         <ul class="tags-jobs">
                           <li><i class="la la-file-text"></i> Applications {{job.applied}}</li>
-                          <li><i class="la la-calendar-o"></i> Post Date: {{job.addedDate  | date:'MMM dd, yyyy'}}</li>
+                          <li><i class="la la-calendar-o"></i> Post Date: {{job.createdAt  | date:'MMM dd, yyyy'}}</li>
                           <li><i class="la la-eye"></i> Views {{job.viewed}}</li>
                         </ul>
                       </div>

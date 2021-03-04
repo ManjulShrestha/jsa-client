@@ -24,7 +24,7 @@ export class CompaniesComponent implements OnInit {
   showString: string;
   @ViewChild('companyModal') companyModal;
   size = 10;
-  page = 1;
+  page = 0;
   companys: Company[] = [];
   totalCompany: number;
   private modalRef;

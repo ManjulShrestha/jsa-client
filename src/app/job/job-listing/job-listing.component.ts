@@ -27,7 +27,7 @@ export class JobListingComponent implements OnInit {
   jobs: Job[] = [];
   filteredJobs: Job[] = [];
   size = 10;
-  page = 1;
+  page = 0;
   totalJob: number;
   jobType: JobType[];
   category: Category[];

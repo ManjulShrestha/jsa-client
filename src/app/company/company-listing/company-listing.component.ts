@@ -14,7 +14,7 @@ declare var $: any;
 export class CompanyListingComponent implements OnInit {
 
   companies: Company[] = [];
-  page: number = 1;
+  page: number = 0;
   size: number = 10;
   teamSize = [];
   category = [];
