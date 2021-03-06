@@ -160,7 +160,7 @@
       <!--<form (ngSubmit)="buy(paymentForm.value)" [formGroup]="paymentForm" class="paymentForm">-->
       <form [formGroup]="paymentForm" class="paymentForm">
         <div class="field" id="card-element">
-        <ngx-stripe-card [elementsOptions]="elementsOptions" [options]="cardOptions"></ngx-stripe-card>
+<!--        <ngx-stripe-card [elementsOptions]="elementsOptions" [options]="cardOptions"></ngx-stripe-card>-->
         </div>
         <div class="division17button">
           <button (click)="buy(paymentForm.value)" type="submit">

@@ -36,7 +36,7 @@ export class CompanyService {
   }
 
   getCompanies(page:number, size:number){
-    return this.http.get('company/?page='+page+'&size='+size);
+    return this.http.get('company/pageable?page='+page+'&size='+size);
   }
 
   getCompanyCount(){

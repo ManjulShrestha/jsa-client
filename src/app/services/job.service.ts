@@ -26,7 +26,7 @@ export class JobService {
   }
 
   getActiveJobs(page:number, size:number){
-    return this.http.get('job?page='+page+'&size='+size);
+    return this.http.get('job/pageable?page='+page+'&size='+size);
   }
 
   getJobCount(){

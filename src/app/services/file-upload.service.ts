@@ -8,8 +8,8 @@ export class FileUploadService {
 
   constructor(private http: HttpService) { }
 
-  uploadFile(fileName:String,formdata:FormData) {
-    return this.http.post('file/upload?fileName='+fileName, formdata);
+  uploadFile(fileName:String, formdata : FormData) {
+    return this.http.post('file/upload', formdata);
   }
 
   deleteFile(fileName:String){

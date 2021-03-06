@@ -27,7 +27,7 @@ export class CandidateService {
   }
 
   getCandidateList(page: number, size: number) {
-    return this.http.get('candidate/?page=' + page + '&size=' + size);
+    return this.http.get('candidate/pageable?page=' + page + '&size=' + size);
   }
 
   getCandidatesCount() {
